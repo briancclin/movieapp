@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140823014153) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "movies", force: true do |t|
     t.string   "name"
     t.integer  "year"
