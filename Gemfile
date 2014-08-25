@@ -10,7 +10,7 @@ group :development, :test do
 end
 
 group :production do
-  gem 'pg', '0.9.0'
+  gem 'pg', '0.15.1'
   gem 'rails_12factor', '0.0.2'
 end
 
@@ -53,8 +53,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 gem 'minitest'
 
 gem 'themoviedb'
-
-gem 'mysql2psql'
 
 group :test do
   gem 'selenium-webdriver', '2.35.1'
