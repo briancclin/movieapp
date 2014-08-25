@@ -13,4 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require tipped
+//= require imagesloaded.pkgd.min
 //= require_tree .

@@ -1,0 +1,23 @@
+<script type="text/javascript">
+	$(document).ready(function() {
+    Tipped.create('.movie-name', function() {
+    	return $(this).data('content')});
+	});
+</script>
+<div class="container">
+<% @movie.first(20).each_slice(5) do |slice| %>
+	<div class="row">
+		<% slice.each do |item| %>
+			<div class="col-md-4">
+			<% result = Tmdb::Movie.find(item.name) %>
+			<% output = result[0] %>
+          					<%= link_to movie_path(output.id) do %>
+            				<%= image_tag("#{@configuration.base_url}w154#{output.poster_path}") if output.poster_path %>
+          					<% end %>
+          					<h5 class="movie-name" data-content="<strong><%= item.name %></strong>"><%= item.name %></h5>
+          					<h5><%= item.year %></h5>
+          	</div>
+      	 <% end %>
+     </div>
+<% end %>
+<div>

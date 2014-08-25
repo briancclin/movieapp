@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  root  'home#home'
-
-  match '/movies', to: 'movie#home', via: 'get'
+  
+  resources :movie
+  
+  root  'home#index'
   
 
   # The priority is based upon order of creation: first created -> highest priority.
