@@ -56,6 +56,11 @@ gem 'themoviedb'
 
 gem 'yaml_db'
 
+gem 'rails4-autocomplete'
+gem 'jquery-ui-rails'
+
+gem 'imdb'
+
 group :test do
   gem 'selenium-webdriver', '2.35.1'
   gem 'capybara', '2.1.0'

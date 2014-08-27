@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   
-  resources :movie
+  get 'search/result'
+
+  resources :movie do
+    get :autocomplete_movie_name, :on => :collection
+  end
   
   root  'home#index'
   
