@@ -1,3 +1,5 @@
+require 'jquery-lazy-images'
+
 class MovieController < ApplicationController
  autocomplete :movie, :name, :full => true, :extra_data => [:year], :display_value => :movie_search_result
   def index

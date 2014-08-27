@@ -6,13 +6,13 @@
 	});
 </script>
 <div class="container">
-<% @movie.first(20).each_slice(5) do |slice| %>
+<% @movie.first(100).each_slice(5) do |slice| %>
 	<div class="row">
 		<% slice.each do |item| %>
 			<div class="col-md-4">
 			<% output = Tmdb::Movie.detail(item.themoviedb_id) %>
           					<%= link_to movie_path(output.id) do %>
-            				<%= image_tag("#{@configuration.base_url}w154#{output.poster_path}") if output.poster_path %>
+            				<%= image_tag("#{@configuration.base_url}w154#{output.poster_path}", size: "154x231") if output.poster_path %>
           					<% end %>
           					<h5 class="movie-name" data-content="<strong><%= item.name %></strong>"><%= item.name %></h5>
           					<h5><%= item.year %></h5>
@@ -21,3 +21,10 @@
      </div>
 <% end %>
 <div>
+<script type="text/javascript">
+   			 $(function() {
+   			 	$("img.lazy").lazyload({
+    effect : "fadeIn"
+});
+				});
+			</script>

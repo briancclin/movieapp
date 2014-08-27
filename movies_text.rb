@@ -8,7 +8,7 @@ File.open('movies.txt', 'r') do |line|
     result = Tmdb::Movie.find(movie_name)
     output = result[0]
     result.each do |item|
-      if movie_name == item.original_title
+      if movie_name == item.original_title 
         output = item;
         break
       end

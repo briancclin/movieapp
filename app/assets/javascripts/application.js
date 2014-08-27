@@ -17,4 +17,5 @@
 //= require turbolinks
 //= require tipped
 //= require imagesloaded.pkgd.min
+//= require jquery.lazyload
 //= require_tree .
