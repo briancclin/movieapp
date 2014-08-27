@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20140823014153) do
     t.string   "name"
     t.integer  "year"
     t.integer  "themoviedb_id"
+    t.string   "poster_path"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

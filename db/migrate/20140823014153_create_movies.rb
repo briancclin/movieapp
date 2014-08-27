@@ -4,6 +4,7 @@ class CreateMovies < ActiveRecord::Migration
       t.string :name
       t.integer :year
       t.integer :themoviedb_id
+      t.string :poster_path
       t.timestamps
     end
   end
