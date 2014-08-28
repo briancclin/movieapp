@@ -1,11 +1,8 @@
 <% provide(:title, 'Movies') %>
-<script type="text/javascript">
-	$(document).ready(function() {
-    Tipped.create('.movie-name', function() {
-    	return $(this).data('content')});
-	});
-</script>
 <div class="container">
+<a href="#" class="buttons_desc">Test</a>
+</div>
+<div class="container" id="movie-list">
 <% @movie.each_slice(5) do |slice| %>
 	<div class="row">
 		<% slice.each do |item| %>
@@ -19,11 +16,37 @@
       	 <% end %>
      </div>
 <% end %>
-<div>
-<script type="text/javascript">
-   			 $(function() {
-   			 	$("img.lazy").lazyload({
-    effect : "fadeIn"
+</div>
+<div class="scroll-top-wrapper ">
+    <span class="scroll-top-inner">
+        <i class="fa fa-2x fa-arrow-circle-up"></i>
+    </span>
+</div>
+<script>
+$(document).ready(function() {
+    Tipped.create('.movie-name', function() {
+    	return $(this).data('content')});
+    	
+    $(document).on( 'scroll', function(){
+        if ($(window).scrollTop() > 100) {
+            $('.scroll-top-wrapper').addClass('show');
+        } else {
+            $('.scroll-top-wrapper').removeClass('show');
+        }
+    });
+    
+    $("img.lazy").lazyload({
+    	effect : "fadeIn"
+	});
+    $('.scroll-top-wrapper').on('click', scrollToTop);
 });
-				});
-			</script>
+ 
+function scrollToTop() {
+    verticalOffset = typeof(verticalOffset) != 'undefined' ? verticalOffset : 0;
+    element = $('body');
+    offset = element.offset();
+    offsetTop = offset.top;
+    $('html, body').animate({scrollTop: offsetTop}, 500, 'linear');
+}
+</script>
+			
