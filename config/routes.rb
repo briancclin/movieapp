@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   
   get 'search/result'
+  
+  get 'search/error'
 
   resources :movie do
     get :autocomplete_movie_name, :on => :collection

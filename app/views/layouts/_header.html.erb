@@ -4,8 +4,10 @@
     <div class="container">
       <nav>
       		<form class="navbar-form pull-left" role="search" action = "/search/result" method = "get">
-        			<input type="text" name="query_str" data-autocomplete="movie/autocomplete_movie_name" class="form-control" placeholder="Search a movie">
-        			<button type="submit" class="btn" >Submit</button>
+        			<input type="text" id="query_str" name="query_str" data-autocomplete="/movie/autocomplete_movie_name" class="form-control" placeholder="Search a movie">
+        			<button type="submit" class="btn" >
+        				<i class="fa fa-search fa-lg"></i>
+        			</button>
       		</form>
         <ul class="nav pull-right">
           <li><%= link_to "Home",    root_path %></li>

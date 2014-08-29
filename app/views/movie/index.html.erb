@@ -1,7 +1,7 @@
 <% provide(:title, 'Movies') %>
 <div class="container">
 	<b>Sort By</b>
-	<button id="atoz" class="pure-button">A-Z</button>
+	<button id="atoz" class="pure-button pure-button-active">A-Z</button>
 	<button id="ztoa" class="pure-button">Z-A</button>
 	<button id="yearup" class="pure-button">Oldest</button>
 	<button id="yeardown" class="pure-button">Newest</button>
@@ -111,18 +111,34 @@ $('button#yeardown').data("method", "desc");
 
 $("button#atoz").click(function() {
 	sortMovies($(this).data("sortKey"),$(this).data("method"))
+	$(this).addClass("pure-button-active");
+	$("button#ztoa").removeClass("pure-button-active");
+	$("bbutton#yearup").removeClass("pure-button-active");
+	$("button#yeardown").removeClass("pure-button-active");
 });
 
 $("button#ztoa").click(function() {
 	sortMovies($(this).data("sortKey"),$(this).data("method"))
+	$(this).addClass("pure-button-active");
+	$("button#atoz").removeClass("pure-button-active");
+	$("bbutton#yearup").removeClass("pure-button-active");
+	$("button#yeardown").removeClass("pure-button-active");
 });
 
 $("button#yearup").click(function() {
 	sortMovies($(this).data("sortKey"),$(this).data("method"))
+	$(this).addClass("pure-button-active");
+	$("button#atoz").removeClass("pure-button-active");
+	$("button#ztoa").removeClass("pure-button-active");
+	$("button#yeardown").removeClass("pure-button-active");
 });
 
 $("button#yeardown").click(function() {
 	sortMovies($(this).data("sortKey"),$(this).data("method"))
+	$(this).addClass("pure-button-active");
+	$("button#atoz").removeClass("pure-button-active");
+	$("button#ztoa").removeClass("pure-button-active");
+	$("button#yearup").removeClass("pure-button-active");
 });
 </script>
 			
