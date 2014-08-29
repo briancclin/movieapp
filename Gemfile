@@ -57,12 +57,17 @@ gem 'themoviedb'
 gem 'yaml_db'
 
 gem 'rails4-autocomplete'
+
 gem 'jquery-ui-rails'
 
 gem 'imdb'
+
 gem 'jquery-lazy-images'
-gem 'font-awesome-sass'
+
+gem 'font-awesome-rails'
+
 gem 'pure-css-rails'
+
 group :test do
   gem 'selenium-webdriver', '2.35.1'
   gem 'capybara', '2.1.0'
