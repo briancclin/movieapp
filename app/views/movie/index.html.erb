@@ -1,4 +1,11 @@
 <% provide(:title, 'Movies') %>
+<div class="container">
+	<b>Sort By</b>
+	<button id="atoz" class="pure-button">A-Z</button>
+	<button id="ztoa" class="pure-button">Z-A</button>
+	<button id="yearup" class="pure-button">Oldest</button>
+	<button id="yeardown" class="pure-button">Newest</button>
+</div>
 <div class="container" id="movie-list">
 <% @movie.each_slice(5) do |slice| %>
 	<div class="row">
@@ -8,7 +15,7 @@
             		<%= image_tag("#{@configuration.base_url}w154#{item.poster_path}", size: "154x231") if item.poster_path %>
           		<% end %>
           			<h5 class="movie-name" data-content="<strong><%= item.name %></strong>"><%= item.name %></h5>
-          			<h5><%= item.year %></h5>
+          			<h5 class="movie-year"><%= item.year %></h5>
           	</div>
       	 <% end %>
      </div>
@@ -21,9 +28,11 @@
 </div>
 <script>
 $(document).ready(function() {
+	/* autocomplete */
     Tipped.create('.movie-name', function() {
     	return $(this).data('content')});
-    	
+    
+    /* scroll to top */
     $(document).on( 'scroll', function(){
         if ($(window).scrollTop() > 100) {
             $('.scroll-top-wrapper').addClass('show');
@@ -32,12 +41,15 @@ $(document).ready(function() {
         }
     });
     
+    $('.scroll-top-wrapper').on('click', scrollToTop);
+    
+    /* lazy load images */
     $("img.lazy").lazyload({
     	effect : "fadeIn"
 	});
-    $('.scroll-top-wrapper').on('click', scrollToTop);
+    
 });
- 
+
 function scrollToTop() {
     verticalOffset = typeof(verticalOffset) != 'undefined' ? verticalOffset : 0;
     element = $('body');
@@ -45,5 +57,72 @@ function scrollToTop() {
     offsetTop = offset.top;
     $('html, body').animate({scrollTop: offsetTop}, 500, 'linear');
 }
+
+
+function sortMovies(sortKey, method) {
+var elems = $('.col-md-4');
+var comparator = function (a, b) {
+    var result = 0;
+    
+    if ($(a).find(sortKey).text() > $(b).find(sortKey).text()) {
+        result = -1;
+    } else {
+        result = 1;
+    }
+    
+    if (method === 'asc') {
+        result *= -1;
+    }
+    
+    return result;
+}
+
+elems.sort(comparator);
+var rows = $('.row');
+var count = 0;
+var curr  = 0;
+for(var i = 0; i < rows.length; i++)
+{
+    for(; curr < elems.length; curr++, count++)
+    {
+        if(count > 4)
+        {
+            count = 0;
+            break;
+        }
+        $('.row').eq(i).append(elems[curr]);
+    }
+}
+/* lazy load images */
+    $("img.lazy").lazyload({
+    	effect : "fadeIn"
+	});
+}
+
+$('button#atoz').data("sortKey", ".movie-name");
+$('button#atoz').data("method", "asc");
+$('button#ztoa').data("sortKey", ".movie-name");
+$('button#ztoa').data("method", "desc");
+$('button#yearup').data("sortKey", ".movie-year");
+$('button#yearup').data("method", "asc");
+$('button#yeardown').data("sortKey", ".movie-year");
+$('button#yeardown').data("method", "desc");
+
+
+$("button#atoz").click(function() {
+	sortMovies($(this).data("sortKey"),$(this).data("method"))
+});
+
+$("button#ztoa").click(function() {
+	sortMovies($(this).data("sortKey"),$(this).data("method"))
+});
+
+$("button#yearup").click(function() {
+	sortMovies($(this).data("sortKey"),$(this).data("method"))
+});
+
+$("button#yeardown").click(function() {
+	sortMovies($(this).data("sortKey"),$(this).data("method"))
+});
 </script>
 			
