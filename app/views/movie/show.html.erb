@@ -1,9 +1,11 @@
 <% provide(:title, @movie.original_title) %>
 <%= @movie.original_title %>
 <br>
+<div>
 <%= @movie.release_date %> 
 <%= @movie.runtime %> minutes
 <%= @imdb_rating %> 
-
+<%= @rotten_rating %> 
+</div>
 <h1>Overview</h1>
 <%= @movie.overview %>

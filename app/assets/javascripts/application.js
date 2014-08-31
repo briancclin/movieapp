@@ -18,4 +18,5 @@
 //= require tipped
 //= require imagesloaded.pkgd.min
 //= require jquery.lazyload
+//= require custom
 //= require_tree .

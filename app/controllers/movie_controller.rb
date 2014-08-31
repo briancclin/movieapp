@@ -13,6 +13,11 @@ class MovieController < ApplicationController
     @images = Tmdb::Movie.images(params[:id])
     @cast = Tmdb::Movie.casts(params[:id])
     @trailers = Tmdb::Movie.trailers(params[:id])
-    @similar_movies = Tmdb::Movie.similar_movies(params[:id])
+    #@similar_movies = Tmdb::Movie.similar_movies(params[:id])
+      @movie_rotten = RottenMovie.find(:imdb => imdb_id)
+    if @movie_rotten.ratings.nil?
+      @movie_rotten = RottenMovie.find(:title => @movie.title, :limit => 1)
+    end
+    @rotten_rating = @movie_rotten.ratings.critics_score
   end
 end

@@ -5,6 +5,8 @@
 	<button id="ztoa" class="pure-button">Z-A</button>
 	<button id="yearup" class="pure-button">Oldest</button>
 	<button id="yeardown" class="pure-button">Newest</button>
+	<button id="imdb" class="pure-button">IMDb Rating</button>
+	<button id="rotten" class="pure-button">RT rating</button>
 </div>
 <div class="container" id="movie-list">
 <% @movie.each_slice(5) do |slice| %>
@@ -14,8 +16,18 @@
           		<%= link_to movie_path(item.themoviedb_id) do %>
             		<%= image_tag("#{@configuration.base_url}w154#{item.poster_path}", size: "154x231") if item.poster_path %>
           		<% end %>
+          		<div class="movie-info">
           			<h5 class="movie-name" data-content="<strong><%= item.name %></strong>"><%= item.name %></h5>
-          			<h5 class="movie-year"><%= item.year %></h5>
+          			<h5 class="movie-year"><strong>(<%= item.year %>)</strong></h5>
+          			<div class="ratings">
+          				<% imdb_path = "http://www.imdb.com/title/tt" + item.imdb_id.to_s %>
+          					<%= link_to imdb_path do %>
+          						<%= image_tag("/assets/imdb.png", size: "44x21") %>
+          					<% end %>
+          					<h5 class="imdb-rating"><%= item.imdb_rating %></h5>
+          			<h5 class="rotten-rating"><font color="red">RT : </font><%= item.rotten_rating %>%</h5>
+          			</div>
+          		</div>
           	</div>
       	 <% end %>
      </div>
@@ -50,95 +62,42 @@ $(document).ready(function() {
     
 });
 
-function scrollToTop() {
-    verticalOffset = typeof(verticalOffset) != 'undefined' ? verticalOffset : 0;
-    element = $('body');
-    offset = element.offset();
-    offsetTop = offset.top;
-    $('html, body').animate({scrollTop: offsetTop}, 500, 'linear');
-}
-
-
-function sortMovies(sortKey, method) {
-var elems = $('.col-md-4');
-var comparator = function (a, b) {
-    var result = 0;
-    
-    if ($(a).find(sortKey).text() > $(b).find(sortKey).text()) {
-        result = -1;
-    } else {
-        result = 1;
-    }
-    
-    if (method === 'asc') {
-        result *= -1;
-    }
-    
-    return result;
-}
-
-elems.sort(comparator);
-var rows = $('.row');
-var count = 0;
-var curr  = 0;
-for(var i = 0; i < rows.length; i++)
-{
-    for(; curr < elems.length; curr++, count++)
-    {
-        if(count > 4)
-        {
-            count = 0;
-            break;
-        }
-        $('.row').eq(i).append(elems[curr]);
-    }
-}
-/* lazy load images */
-    $("img.lazy").lazyload({
-    	effect : "fadeIn"
-	});
-}
-
-$('button#atoz').data("sortKey", ".movie-name");
-$('button#atoz').data("method", "asc");
-$('button#ztoa').data("sortKey", ".movie-name");
-$('button#ztoa').data("method", "desc");
-$('button#yearup').data("sortKey", ".movie-year");
-$('button#yearup').data("method", "asc");
-$('button#yeardown').data("sortKey", ".movie-year");
-$('button#yeardown').data("method", "desc");
-
+/* sorting */
+insertButtonInfo('button#atoz', ".movie-name", "asc");
+insertButtonInfo('button#ztoa', ".movie-name", "desc");
+insertButtonInfo('button#yearup', ".movie-year", "asc");
+insertButtonInfo('button#yeardown', ".movie-year", "desc");
+insertButtonInfo('button#imdb', ".imdb-rating", "desc");
+insertButtonInfo('button#rotten', ".rotten-rating", "desc");
 
 $("button#atoz").click(function() {
 	sortMovies($(this).data("sortKey"),$(this).data("method"))
-	$(this).addClass("pure-button-active");
-	$("button#ztoa").removeClass("pure-button-active");
-	$("bbutton#yearup").removeClass("pure-button-active");
-	$("button#yeardown").removeClass("pure-button-active");
+	buttonHighlight("button#atoz");
 });
 
 $("button#ztoa").click(function() {
 	sortMovies($(this).data("sortKey"),$(this).data("method"))
-	$(this).addClass("pure-button-active");
-	$("button#atoz").removeClass("pure-button-active");
-	$("bbutton#yearup").removeClass("pure-button-active");
-	$("button#yeardown").removeClass("pure-button-active");
+	buttonHighlight("button#ztoa");
 });
 
 $("button#yearup").click(function() {
 	sortMovies($(this).data("sortKey"),$(this).data("method"))
-	$(this).addClass("pure-button-active");
-	$("button#atoz").removeClass("pure-button-active");
-	$("button#ztoa").removeClass("pure-button-active");
-	$("button#yeardown").removeClass("pure-button-active");
+	buttonHighlight("button#yearup");
 });
 
 $("button#yeardown").click(function() {
 	sortMovies($(this).data("sortKey"),$(this).data("method"))
-	$(this).addClass("pure-button-active");
-	$("button#atoz").removeClass("pure-button-active");
-	$("button#ztoa").removeClass("pure-button-active");
-	$("button#yearup").removeClass("pure-button-active");
+	buttonHighlight("button#yeardown");
+});
+
+$("button#imdb").click(function() {
+	sortMovies($(this).data("sortKey"),$(this).data("method"))
+	buttonHighlight("button#imdb");
+});
+
+$("button#rotten").click(function() {
+	sortMoviesNum($(this).data("sortKey"),$(this).data("method"))
+	buttonHighlight("button#rotten");
 });
 </script>
 			

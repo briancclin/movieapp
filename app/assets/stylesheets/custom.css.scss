@@ -23,7 +23,7 @@ body {
   color: #fff;
   text-decoration: none;
 }
-
+/* movie index */
 .col-md-4 {
   display: inline-block;
   padding: 15px;
@@ -37,6 +37,23 @@ body {
   height: 231px;
 }
 
+.movie-info {
+  .movie-year {
+    position: relative;
+    top: -10px;
+  }
+  .ratings{
+     position: relative;
+     top: -18px;
+    .imdb-rating {
+      display:inline;
+    }
+    .rotten-rating {
+      display:inline;
+  }
+  }
+}
+/* scroll */
 .scroll-top-wrapper {
     position: fixed;
     opacity: 0;
