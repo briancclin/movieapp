@@ -1,6 +1,5 @@
 include RottenTomatoes
 Rotten.api_key = "twvtkhmbbdkys45fk9tudk5t"
-Tmdb::Api.key("4ec3a19d6af74f88a492405690f72298")
 
 movie = Movie.all
 movie.each do |item|
