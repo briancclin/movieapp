@@ -1,3 +1,4 @@
+require 'rottentomatoes'
 include RottenTomatoes
 Rotten.api_key = "twvtkhmbbdkys45fk9tudk5t"
 
