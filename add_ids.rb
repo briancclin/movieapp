@@ -8,7 +8,7 @@ movie.each do |item|
   imdb_id = movie_details.imdb_id.gsub(/[^\d]/, '')
   item.update(imdb_id: imdb_id)
   movie_rotten = RottenMovie.find(:imdb => imdb_id)
-  if movie_rotten.ratings.nil? or movie_rotten.empty? or movie_rotten.ratings.critics_score == -1
+  if movie_rotten.ratings.empty? or movie_rotten.empty? or movie_rotten.ratings.critics_score == -1
     movie_rotten = RottenMovie.find(:title => movie_details.title, :limit => 1)
   end
   if(movie_rotten.empty?)
