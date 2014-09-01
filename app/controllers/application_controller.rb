@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
   before_filter :set_config
   Tmdb::Api.key("4ec3a19d6af74f88a492405690f72298")
-  Rotten.api_key = "twvtkhmbbdkys45fk9tudk5t"
+  Rotten.api_key = "pwp4r2874qd8dzkhhebk7zcy"
   def set_config
     @configuration = Tmdb::Configuration.new
   end

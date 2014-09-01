@@ -1,6 +1,6 @@
 require 'rottentomatoes'
 include RottenTomatoes
-Rotten.api_key = "twvtkhmbbdkys45fk9tudk5t"
+Rotten.api_key = "pwp4r2874qd8dzkhhebk7zcy"
 
 movie = Movie.all
 movie.each do |item|
