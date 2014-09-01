@@ -22,8 +22,10 @@ File.open('movies.txt', 'r') do |line|
       imdb_id = (moviedb.imdb_id).gsub(/[^\d]/, '')
       imdb_rating = Imdb::Movie.new(imdb_id).rating
       movie_rotten = RottenMovie.find(:imdb => imdb_id)
-      if movie_rotten.ratings.nil? or movie_rotten.empty? or movie_rotten.ratings.empty? or movie_rotten.ratings.critics_score == -1
-        movie_rotten = RottenMovie.find(:title => moviedb.title, :limit => 1)
+      if movie_rotten.ratings.nil? or movie_rotten.empty?  
+        movie_rotten = RottenMovie.find(:title => movie_details.title, :limit => 1)
+      elsif movie_rotten.ratings.empty? or movie_rotten.empty? or movie_rotten.ratings.critics_score == -1
+        movie_rotten = RottenMovie.find(:title => movie_details.title, :limit => 1)
       end
       if(movie_rotten.empty?)
         rotten_rating = -1;
