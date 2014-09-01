@@ -26,5 +26,4 @@ movie.each do |item|
   end
   item.update(rotten_id: rotten_id)
   item.update(rotten_rating: rotten_rating)
-  sleep(1)
 end
