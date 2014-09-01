@@ -25,7 +25,13 @@
           						<%= image_tag("/assets/imdb.png", size: "44x21") %>
           					<% end %>
           					<h5 class="imdb-rating"><%= item.imdb_rating %></h5>
-          			<h5 class="rotten-rating"><font color="red">RT : </font><%= item.rotten_rating %>%</h5>
+          					<%= link_to item.rotten_link do %>
+          						<% if item.rotten_rating > 0 %>
+          							<% img_src = "/assets/" + get_rotten_image(item.rotten_rating, item.certified_fresh) %>
+          							<%= image_tag(img_src, size: "26x28") %>
+          						<% end %>
+          					<% end %>
+          			<h5 class="rotten-rating"><%= get_rotten_text(item.rotten_rating) %></h5>
           			</div>
           		</div>
           	</div>
