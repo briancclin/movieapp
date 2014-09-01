@@ -20,4 +20,5 @@ movie.each do |item|
     end
   end
   item.update(:certified_fresh => fresh)
+  sleep(1)
 end
