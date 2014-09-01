@@ -59,8 +59,8 @@ function sortMoviesNum(sortKey, method) {
 	var elems = $('.col-md-4');
 	var comparator = function (a, b) {
     	var result = 0;
-    	var left = $(a).find(sortKey).text().replace( /^\D+/g, '');
-    	var right = $(b).find(sortKey).text().replace( /^\D+/g, '');
+    	var left = $(a).find(sortKey).text().replace( /^\D+/g, '').to_f;
+    	var right = $(b).find(sortKey).text().replace( /^\D+/g, '').to_f;
     	if (parseInt(left) > parseInt(right)) {
         	result = -1;
     	} else {
