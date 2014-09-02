@@ -21,23 +21,8 @@ File.open('movies.txt', 'r') do |line|
       moviedb = Tmdb::Movie.detail(output.id)
       imdb_id = (moviedb.imdb_id).gsub(/[^\d]/, '')
       imdb_rating = Imdb::Movie.new(imdb_id).rating
-      movie_rotten = RottenMovie.find(:imdb => imdb_id)
-      if movie_rotten.ratings.nil? or movie_rotten.empty?  
-    movie_rotten = RottenMovie.find(:title => moviedb.title, :limit => 1)
-  elsif movie_rotten.ratings.empty? or movie_rotten.empty? or movie_rotten.ratings.critics_score == -1
-    movie_rotten = RottenMovie.find(:title => moviedb.title, :limit => 1)
-  end
-      if(movie_rotten.empty?)
-        rotten_rating = -1;
-      else
-        if(movie_rotten.ratings.empty?)
-          rotten_rating = -1;
-        else
-          rotten_rating = movie_rotten.ratings.critics_score
-        end
-      end
       poster_path = output.poster_path
-      movie = Movie.new(name: movie_name, year: movie_year, themoviedb_id: movie_id, poster_path: poster_path, imdb_rating: imdb_rating, rotten_rating: rotten_rating)
+      movie = Movie.new(name: movie_name, year: movie_year, themoviedb_id: movie_id, poster_path: poster_path, imdb_rating: imdb_rating)
       movie.save 
     #output = movie_name + ' ' + movie_year
     #puts output 
