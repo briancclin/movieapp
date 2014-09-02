@@ -4,7 +4,6 @@ Rotten.api_key = "pwp4r2874qd8dzkhhebk7zcy"
 
 movie = Movie.all
 movie.each do |item|
-  puts item.rotten_id
   rotten = RottenMovie.find(:id => item.rotten_id, :limit => 1)
   if rotten.empty?
     item.update(:rotten_link => "")
