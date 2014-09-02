@@ -18,7 +18,7 @@ module MovieHelper
     if rating < 0
       return ""
     else
-      return rating.to_s + "%"
+      return rating.to_s.strip + "%"
     end
   end
 end
