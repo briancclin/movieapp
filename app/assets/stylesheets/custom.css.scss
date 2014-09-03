@@ -40,12 +40,13 @@ body {
 .movie-info-top {
   display: inline-block;
   h2,h4,h6 {
-    text-align:center
+    text-align:center;
   }
   p{
       width: 600px;
   }
   .ratings{
+     text-align:center;
      position: relative;
      top: 10px;
     .imdb-rating {
@@ -58,6 +59,14 @@ body {
 }
 
 #info-right {
+  position: absolute;
+  top: 0px;
+  height:330px;
+  width:600px;
+  padding-left:50px;
+  padding-right:50px;
+  background-color: #f1f5f9;
+  border-radius: 50px;
   margin-left: 50px;
 }
 

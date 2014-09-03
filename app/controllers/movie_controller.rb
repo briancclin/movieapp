@@ -19,5 +19,6 @@ class MovieController < ApplicationController
     end
     #@similar_movies = Tmdb::Movie.similar_movies(params[:id])
     @rotten_rating = @movie.rotten_rating
+    @backdrop = @moviedb.backdrop_path
   end
 end

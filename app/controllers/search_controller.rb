@@ -6,7 +6,7 @@ class SearchController < ApplicationController
         if(paranthesis != nil)
           movie_name = movie.gsub(paranthesis,'').strip
           movie = Movie.where(name: movie_name).take
-          redirect_to :controller => 'movie', :action => 'show', :id => movie.themoviedb_id
+          redirect_to :controller => 'movie', :action => 'show', :id => movie.id
         else
           redirect_to :controller => 'search', :action => 'error'
         end
