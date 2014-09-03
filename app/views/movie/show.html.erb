@@ -1,4 +1,6 @@
 <% provide(:title, @movie.name) %>
+<body background = <%= "#{@configuration.base_url}w1920#{@backdrop}" %>>
+<div class = "movie-info-all">
 <div class ="container">
 	<div class ="row">
 		<div class="movie-info-top">
@@ -6,16 +8,16 @@
 			<div class="ratings">
         		<% imdb_path = "http://www.imdb.com/title/tt" + @movie.imdb_id.to_s %>
           		<%= link_to imdb_path do %>
-          			<%= image_tag("/assets/imdb.png", size: "79x38") %>
+          			<%= image_tag("/assets/imdb.png", size: "71x34") %>
           		<% end %>
-          		<h5 class="imdb-rating"><%= @imdb_rating %></h5>
+          		<h4 class="imdb-rating"><%= @imdb_rating %></h4>
           			<%= link_to @movie.rotten_link do %>
           				<% if @rotten_rating > 0 %>
           					<% img_src = "/assets/" + get_rotten_image(@rotten_rating, @movie.certified_fresh) %>
-          					<%= image_tag(img_src, size: "47x50") %>
+          					<%= image_tag(img_src, size: "42x45") %>
           				<% end %>
           			<% end %>
-          		<h5 class="rotten-rating"><%= get_rotten_text(@rotten_rating) %></h5>
+          		<h4 class="rotten-rating"><%= get_rotten_text(@rotten_rating) %></h4>
         	</div>
 		</div>
 		<div class = "movie-info-top bg-primary" id = "info-right">
@@ -36,6 +38,8 @@
     	<% end %>
     	<% end %>
 </div>
+</div>
+</body>
 <script>
 /* lazy load images */
     $("img.lazy").lazyload({

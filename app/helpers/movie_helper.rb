@@ -38,4 +38,5 @@ end
     movie = RottenMovie.find(:id => id)
     return movie.links.alternate
   end
+ 
 
