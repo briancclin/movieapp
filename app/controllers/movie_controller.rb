@@ -6,18 +6,18 @@ class MovieController < ApplicationController
     @movie = Movie.all.sort()
   end
   def show
-    @movie = Tmdb::Movie.detail(params[:id])
-    imdb_id = @movie.imdb_id
-    imdb_id = imdb_id.gsub(/[^\d]/, '')
-    @imdb_rating = Imdb::Movie.new(imdb_id).rating
-    @images = Tmdb::Movie.images(params[:id])
-    @cast = Tmdb::Movie.casts(params[:id])
-    @trailers = Tmdb::Movie.trailers(params[:id])
-    #@similar_movies = Tmdb::Movie.similar_movies(params[:id])
-      @movie_rotten = RottenMovie.find(:imdb => imdb_id)
-    if @movie_rotten.ratings.nil?
-      @movie_rotten = RottenMovie.find(:title => @movie.title, :limit => 1)
+    @movie = Movie.find(params[:id])
+    @moviedb = Tmdb::Movie.detail(@movie.themoviedb_id)
+    @imdb_rating = @movie.imdb_rating
+    @trailers = Tmdb::Movie.trailers(@movie.themoviedb_id)
+    @casts = Tmdb::Movie.credits(@movie.themoviedb_id)['cast']
+    @crew = Tmdb::Movie.credits(@movie.themoviedb_id)['crew']
+    @crew.each do |person|
+      if person['job'] == "Director"
+        @director = person['name']
+      end
     end
-    @rotten_rating = @movie_rotten.ratings.critics_score
+    #@similar_movies = Tmdb::Movie.similar_movies(params[:id])
+    @rotten_rating = @movie.rotten_rating
   end
 end

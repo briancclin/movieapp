@@ -13,7 +13,7 @@
 	<div class="row">
 		<% slice.each do |item| %>
 			<div class="col-md-4">
-          		<%= link_to movie_path(item.themoviedb_id) do %>
+          		<%= link_to movie_path(item.id) do %>
             		<%= image_tag("#{@configuration.base_url}w154#{item.poster_path}", size: "154x231") if item.poster_path %>
           		<% end %>
           		<div class="movie-info">

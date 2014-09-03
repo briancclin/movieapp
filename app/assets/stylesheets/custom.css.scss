@@ -37,6 +37,30 @@ body {
   height: 231px;
 }
 
+.movie-info-top {
+  display: inline-block;
+  h2,h4,h6 {
+    text-align:center
+  }
+  p{
+      width: 600px;
+  }
+  .ratings{
+     position: relative;
+     top: 10px;
+    .imdb-rating {
+      display:inline;
+    }
+    .rotten-rating {
+      display:inline;
+  }
+  }
+}
+
+#info-right {
+  margin-left: 50px;
+}
+
 .movie-info {
   .movie-year {
     position: relative;
@@ -53,6 +77,8 @@ body {
   }
   }
 }
+
+
 /* scroll */
 .scroll-top-wrapper {
     position: fixed;
