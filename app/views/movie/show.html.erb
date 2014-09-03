@@ -1,44 +1,58 @@
 <% provide(:title, @movie.name) %>
 <body background = <%= "#{@configuration.base_url}w1920#{@backdrop}" %>>
 <div class = "movie-info-all">
-<div class ="container">
-	<div class ="row">
-		<div class="movie-info-top">
-			<%= image_tag("#{@configuration.base_url}w154#{@movie.poster_path}", size: "187x416") if @movie.poster_path %>
-			<div class="ratings">
-        		<% imdb_path = "http://www.imdb.com/title/tt" + @movie.imdb_id.to_s %>
-          		<%= link_to imdb_path do %>
-          			<%= image_tag("/assets/imdb.png", size: "71x34") %>
-          		<% end %>
-          		<h4 class="imdb-rating"><%= @imdb_rating %></h4>
-          			<%= link_to @movie.rotten_link do %>
-          				<% if @rotten_rating > 0 %>
-          					<% img_src = "/assets/" + get_rotten_image(@rotten_rating, @movie.certified_fresh) %>
-          					<%= image_tag(img_src, size: "42x45") %>
-          				<% end %>
+	<div class ="container">
+		<div class ="row">
+			<div class="movie-info-top">
+				<%= image_tag("#{@configuration.base_url}w154#{@movie.poster_path}", size: "187x416") if @movie.poster_path %>
+				<div class="ratings">
+        			<% imdb_path = "http://www.imdb.com/title/tt" + @movie.imdb_id.to_s %>
+          			<%= link_to imdb_path do %>
+          				<%= image_tag("/assets/imdb.png", size: "71x34") %>
           			<% end %>
-          		<h4 class="rotten-rating"><%= get_rotten_text(@rotten_rating) %></h4>
-        	</div>
-		</div>
-		<div class = "movie-info-top bg-primary" id = "info-right">
-			<h2><%= @movie.name %> (<%= @movie.year %>)</h2>
-			<h6><%= @moviedb.runtime %> minutes | <%= @moviedb.release_date %></h6>
-			<h4>Directed by: <%= @director %></h4>
-			<h3>Overview</h3>
-			<p><%= @moviedb.overview %></p>
+          			<h4 class="imdb-rating"><%= @imdb_rating %></h4>
+          				<%= link_to @movie.rotten_link do %>
+          					<% if @rotten_rating > 0 %>
+          						<% img_src = "/assets/" + get_rotten_image(@rotten_rating, @movie.certified_fresh) %>
+          						<%= image_tag(img_src, size: "42x45") %>
+          					<% end %>
+          				<% end %>
+          			<h4 class="rotten-rating"><%= get_rotten_text(@rotten_rating) %></h4>
+        		</div>
+			</div>
+			<div class = "movie-info-top bg-primary" id = "info-right">
+				<h2><%= @movie.name %> (<%= @movie.year %>)</h2>
+				<h6><%= @moviedb.runtime %> minutes | <%= @moviedb.release_date %></h6>
+				<h4>Directed by: <%= @director %></h4>
+				<h3>Overview</h3>
+				<p><%= @moviedb.overview %></p>
+			</div>
 		</div>
 	</div>
-</div>
-<br>
-<div class="trailer">
-	<h3>Trailer</h3>
- <% @trailers['youtube'].each do |trailer| %>
- 		<% if trailer['type'] == "Trailer" %>
-    		<%= raw(youtube_embed("http://www.youtube.com/watch?v=#{trailer['source']}")) %><br />
-    		<% break %>
+	<br>
+	<div class="trailer">
+		<h3>Trailer</h3>
+ 		<% @trailers['youtube'].each do |trailer| %>
+ 			<% if trailer['type'] == "Trailer" %>
+    			<%= raw(youtube_embed("http://www.youtube.com/watch?v=#{trailer['source']}")) %><br />
+    			<% break %>
+    		<% end %>
     	<% end %>
-    	<% end %>
-</div>
+	</div>
+	<h3>Cast</h3>
+			<table class="pure-table pure-table-horizontal table-striped table-hover">
+				<% @cast.first(5).each do |cast| %>
+				<tr>
+					<td style="width:15%">
+						<%= image_tag("#{@configuration.base_url}w300#{cast['profile_path']}") if cast['profile_path'] %>
+						<% unless cast['profile_path'] %><img src="http://placehold.it/154x154"><% end %>
+					</td>
+					<td>
+						<h4 class="cast_information"><%= cast['name'] %> as <%= cast['character'] %></h4>
+					</td>
+				</tr>
+				<% end %>
+			</table>
 </div>
 </body>
 <script>

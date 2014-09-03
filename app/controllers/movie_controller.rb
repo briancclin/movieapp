@@ -10,7 +10,7 @@ class MovieController < ApplicationController
     @moviedb = Tmdb::Movie.detail(@movie.themoviedb_id)
     @imdb_rating = @movie.imdb_rating
     @trailers = Tmdb::Movie.trailers(@movie.themoviedb_id)
-    @casts = Tmdb::Movie.credits(@movie.themoviedb_id)['cast']
+    @cast = Tmdb::Movie.casts(@movie.themoviedb_id)
     @crew = Tmdb::Movie.credits(@movie.themoviedb_id)['crew']
     @crew.each do |person|
       if person['job'] == "Director"
