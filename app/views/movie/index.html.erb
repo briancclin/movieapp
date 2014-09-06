@@ -8,13 +8,14 @@
 	<button id="yeardown" class="pure-button">Newest</button>
 	<button id="imdb" class="pure-button">IMDb Rating</button>
 	<button id="rotten" class="pure-button">RT rating</button>
+	<button id="random" data-content="<%= @length %>" class="pure-button"><i class="fa fa-random fa-lg"></i></button>
 </div>
 <div class="container" id="movie-list">
 <% @movie.each_slice(5) do |slice| %>
 	<div class="row">
 		<% slice.each do |item| %>
 			<div class="col-md-4">
-				<div class="movie-info">
+				<div class="movie-info" id="<%= "#{item.id}" %>">
           		<%= link_to movie_path(item.id) do %>
             		<%= image_tag("#{@configuration.base_url}w154#{item.poster_path}", size: "154x231") if item.poster_path %>
           		<% end %>
@@ -23,12 +24,12 @@
           			<div class="ratings">
           				<% imdb_path = "http://www.imdb.com/title/tt" + item.imdb_id.to_s %>
           					<%= link_to imdb_path do %>
-          						<%= image_tag("/assets/imdb.png", size: "44x21") %>
+          						<%= image_tag("imdb.png", size: "44x21") %>
           					<% end %>
           					<h5 class="imdb-rating"><%= item.imdb_rating %></h5>
           					<%= link_to item.rotten_link do %>
           						<% if item.rotten_rating > 0 %>
-          							<% img_src = "/assets/" + get_rotten_image(item.rotten_rating, item.certified_fresh) %>
+          							<% img_src = get_rotten_image(item.rotten_rating, item.certified_fresh) %>
           							<%= image_tag(img_src, size: "26x28") %>
           						<% end %>
           					<% end %>
@@ -48,9 +49,12 @@
 </body>
 <script>
 $(document).ready(function() {
-	/* autocomplete */
+	/* tooltip */
     Tipped.create('.movie-name', function() {
     	return $(this).data('content')});
+    
+    Tipped.create('button#random', function() {
+    	return "Roll for a random movie"});
     
     /* scroll to top */
     $(document).on( 'scroll', function(){
@@ -106,6 +110,15 @@ $("button#imdb").click(function() {
 $("button#rotten").click(function() {
 	sortMoviesNum($(this).data("sortKey"),$(this).data("method"))
 	buttonHighlight("button#rotten");
+});
+
+$("button#random").click(function() {
+	$(".movie-info").removeClass("movie-info-chosen");
+	var num = Math.floor((Math.random() * $(this).data('content')) + 1);
+	var input = ".movie-info#" + num.toString();
+	console.log(input);
+	$.scrollTo( $(input).offset().top - 200, 0);
+	$(input).addClass("movie-info-chosen");
 });
 </script>
 			

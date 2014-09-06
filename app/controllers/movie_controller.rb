@@ -4,6 +4,7 @@ class MovieController < ApplicationController
  autocomplete :movie, :name, :full => true, :extra_data => [:year], :display_value => :movie_search_result
   def index
     @movie = Movie.all.sort()
+    @length = Movie.count
   end
   def show
     @movie = Movie.find(params[:id])

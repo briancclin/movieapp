@@ -1,6 +1,13 @@
 /**
  * @author Brian
  */
+function goTo(location) {
+		console.log($(location).offset().top);
+        $('html, body').animate({
+            scrollTo: $(location).offset().top + 'px'
+        }, 'fast');
+}
+
 function scrollToTop() {
     verticalOffset = typeof(verticalOffset) != 'undefined' ? verticalOffset : 0;
     element = $('body');

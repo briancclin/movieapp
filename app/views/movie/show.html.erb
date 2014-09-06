@@ -8,12 +8,12 @@
 				<div class="ratings">
         			<% imdb_path = "http://www.imdb.com/title/tt" + @movie.imdb_id.to_s %>
           			<%= link_to imdb_path do %>
-          				<%= image_tag("/assets/imdb.png", size: "71x34") %>
+          				<%= image_tag("imdb.png", size: "71x34") %>
           			<% end %>
           			<h4 class="imdb-rating"><%= @imdb_rating %></h4>
           				<%= link_to @movie.rotten_link do %>
           					<% if @rotten_rating > 0 %>
-          						<% img_src = "/assets/" + get_rotten_image(@rotten_rating, @movie.certified_fresh) %>
+          						<% img_src = get_rotten_image(@rotten_rating, @movie.certified_fresh) %>
           						<%= image_tag(img_src, size: "42x45") %>
           					<% end %>
           				<% end %>
