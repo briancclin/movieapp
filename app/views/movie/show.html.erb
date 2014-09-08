@@ -1,10 +1,10 @@
 <% provide(:title, @movie.name) %>
 <body background = <%= "#{@configuration.base_url}w1920#{@backdrop}" %>>
-<div class="movie-info-all">
-	<div class="container">
-		<div class="row">
+<div class = "movie-info-all">
+	<div class ="container">
+		<div class ="row">
 			<div class="movie-info-top">
-				<%= image_tag("#{@configuration.base_url}w154#{@movie.poster_path}", width: "187") if @movie.poster_path %>
+				<%= image_tag("#{@configuration.base_url}w154#{@movie.poster_path}", size: "187x416") if @movie.poster_path %>
 				<div class="ratings">
         			<% imdb_path = "http://www.imdb.com/title/tt" + @movie.imdb_id.to_s %>
           			<%= link_to imdb_path do %>
@@ -20,18 +20,18 @@
           			<h4 class="rotten-rating"><%= get_rotten_text(@rotten_rating) %></h4>
         		</div>
 			</div>
-			<div class = "movie-info-top" id = "info-right">
-				<h1><%= @movie.name %> (<%= @movie.year %>)</h1>
-				<h5><%= @moviedb.runtime %> minutes | <%= @moviedb.release_date %></h5>
-				<h3>Directed by: <%= @director %></h3>
-				<h2>Overview</h2>
-				<p><font size="3"><%= @moviedb.overview %></font></p>
+			<div class = "movie-info-top bg-primary" id = "info-right">
+				<h2><%= @movie.name %> (<%= @movie.year %>)</h2>
+				<h6><%= @moviedb.runtime %> minutes | <%= @moviedb.release_date %></h6>
+				<h4>Directed by: <%= @director %></h4>
+				<h3>Overview</h3>
+				<p><%= @moviedb.overview %></p>
 			</div>
 		</div>
 	</div>
 	<br>
 	<div class="trailer">
-		<h2>Trailer</h2>
+		<h3>Trailer</h3>
  		<% @trailers['youtube'].each do |trailer| %>
  			<% if trailer['type'] == "Trailer" %>
     			<%= raw(youtube_embed("http://www.youtube.com/watch?v=#{trailer['source']}")) %><br />
@@ -39,12 +39,12 @@
     		<% end %>
     	<% end %>
 	</div>
-	<h2>Cast</h2>
+	<h3>Cast</h3>
 			<table class="pure-table pure-table-horizontal table-striped">
 				<% @cast.first(5).each do |cast| %>
 				<tr>
 					<td style="width:15%">
-						<%= image_tag("#{@configuration.base_url}w300#{cast['profile_path']}", width: "124" ) if cast['profile_path'] %>
+						<%= image_tag("#{@configuration.base_url}w300#{cast['profile_path']}") if cast['profile_path'] %>
 						<% unless cast['profile_path'] %><img src="http://placehold.it/154x154"><% end %>
 					</td>
 					<td>
