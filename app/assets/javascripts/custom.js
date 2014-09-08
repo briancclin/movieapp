@@ -23,7 +23,7 @@ function insertButtonInfo(button, sortKey, method) {
 }
 
 function sortMovies(sortKey, method) {
-	var elems = $('.col-md-4');
+	var elems = $('.movie-col');
 	var comparator = function (a, b) {
     	var result = 0;
     
@@ -64,7 +64,7 @@ function sortMovies(sortKey, method) {
 }
 
 function sortMoviesNum(sortKey, method) {
-	var elems = $('.col-md-4');
+	var elems = $('.movie-col');
 	var comparator = function (a, b) {
     	var result = 0;
     	var left = ($(a).find(sortKey).text()).replace( /\D/g, '');
