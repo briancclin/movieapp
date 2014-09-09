@@ -1,14 +1,26 @@
 @import "bootstrap";
 
-body {
-  padding-top: 140px;
+header {
+  padding-bottom: 80px;
 }
-
 /* header */
+
+/* navbar */
 .navbar-inner#gray-navbar {
   background-color: #4a4d50;
   background-image: linear-gradient(to bottom, #4a4d50, #4a4d50);
   padding-top: 20px;
+}
+
+#movie-link, #home-link {
+  color: #fff;
+  font-size: 1.3em;
+  position:relative;
+  top: 5px;
+}
+
+#movie-link:hover, #home-link:hover {
+  background-color: #D3D3D3;
 }
 
 #search-bar{
@@ -28,6 +40,7 @@ body {
   border-width: 1px;
 }
 
+/* logo */
 #logo {
   float: left;
   margin-right: 10px;
@@ -42,21 +55,11 @@ body {
   line-height: 1;
 }
 
-#movie-link, #home-link {
-  color: #fff;
-  font-size: 1.3em;
-  position:relative;
-  top: 5px;
-}
-
-#movie-link:hover, #home-link:hover {
-  background-color: #D3D3D3;
-}
-
 #logo:hover {
   color: #fff;
   text-decoration: none;
 }
+
 /* movie index */
 .col-md-4 {
   padding: 17px;
@@ -83,6 +86,41 @@ body {
   border-radius: 50px;
   font-weight: bold;
 }
+
+.movie-info {
+  .movie-year {
+    position: relative;
+    top: -10px;
+  }
+  .ratings{
+     position: relative;
+     top: -18px;
+    .imdb-rating {
+      display:inline;
+    }
+    .rotten-rating {
+      display:inline;
+  }
+  }
+}
+
+
+.movie-info-hover, .movie-info:hover, .movie-info:focus {
+  box-shadow: 10px 10px 5px #888888;
+}
+
+.movie-info-chosen {
+  box-shadow: 10px 10px 5px #888888;
+  border: #0088cc;
+  border-style: solid;
+  border-width: 5px;
+}
+
+button#random {
+  float:right;
+}
+
+/* movie show */
 
 .movie-info-top {
   display: inline-block;
@@ -118,39 +156,6 @@ body {
   width:600px;
   margin-left: 50px;
   opacity: 0.8;
-}
-
-.movie-info {
-  .movie-year {
-    position: relative;
-    top: -10px;
-  }
-  .ratings{
-     position: relative;
-     top: -18px;
-    .imdb-rating {
-      display:inline;
-    }
-    .rotten-rating {
-      display:inline;
-  }
-  }
-}
-
-
-.movie-info-hover, .movie-info:hover, .movie-info:focus {
-  box-shadow: 10px 10px 5px #888888;
-}
-
-.movie-info-chosen {
-  box-shadow: 10px 10px 5px #888888;
-  border: #0088cc;
-  border-style: solid;
-  border-width: 5px;
-}
-
-button#random {
-  float:right;
 }
 
 
