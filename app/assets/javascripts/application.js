@@ -20,4 +20,5 @@
 //= require jquery.lazyload
 //= require jquery.scrollTo
 //= require custom
+//= require bootstrap
 //= require_tree .
