@@ -135,6 +135,7 @@ body {
   .ratings{
      position: relative;
      top: -10px;
+     height:34px;
     .imdb-rating {
       display:inline;
     }
@@ -142,6 +143,10 @@ body {
       display:inline;
   }
   }
+}
+
+a > img#imdb_image {
+  margin: 2% 0 2% 0;
 }
 
 .movie-info-hover, .movie-info:hover, .movie-info:focus {
@@ -155,7 +160,7 @@ body {
   border-width: 5px;
 }
 
-button#random {
+button#random, button#random-mobile {
   float: right;
 }
 

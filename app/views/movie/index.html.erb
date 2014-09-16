@@ -23,11 +23,14 @@
     	<li><a href="#" onclick="sortrt()">RT Rating</a></li>
   </ul>
  </div>
-	<button id="random" data-content="<%= @length %>" class="pure-button"><i class="fa fa-random fa-lg"></i></button>
+	<button id="random" data-content="<%= @length %>" class="pure-button hidden-xs"><i class="fa fa-random fa-lg"></i></button>
+	<button id="random-mobile" data-content="<%= @length %>" class="pure-button visible-xs-inline-block"><i class="fa fa-random fa-lg"></i></button>
 </div>
+
+
 <div class="container hidden-xs" id="movie-list">
 	<div class="row">
-<% @movie.each do |item| %>
+		<% @movie.each do |item| %>
 			<div class="movie-col col-md-3 col-sm-4 col-xs-6" id="movie-col">
 				<div class="movie-info" id="<%= "#{item.id}" %>">
           		<%= link_to movie_path(item.id) do %>
@@ -38,7 +41,7 @@
           			<div class="ratings">
           				<% imdb_path = "http://www.imdb.com/title/tt" + item.imdb_id.to_s %>
           					<%= link_to imdb_path do %>
-          						<%= image_tag("imdb.png", size: "53x25") %>
+          						<%= image_tag("imdb.png", size: "53x25", id: "imdb_image") %>
           					<% end %>
           					<h4 class="imdb-rating"><%= item.imdb_rating %></h4>
           					<%= link_to item.rotten_link do %>
@@ -51,12 +54,12 @@
           			</div>
           		</div>
           	</div>
-<% end %>
+		<% end %>
      </div>
 </div>
 
-<div class="container">
-<div id="movie-carousel" class="carousel visible-xs" data-ride="carousel">
+<div class="container visible-xs">
+<div id="movie-carousel" class="carousel" data-ride="carousel">
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
@@ -197,6 +200,11 @@ $("button#random").click(function() {
 	console.log(input);
 	$.scrollTo( $(input).offset().top - 200, 0);
 	$(input).addClass("movie-info-chosen");
+});
+
+$("button#random-mobile").click(function() {
+	var num = Math.floor((Math.random() * $(this).data('content')) + 1);
+	$('.carousel').carousel(num);
 });
 </script>
 			
