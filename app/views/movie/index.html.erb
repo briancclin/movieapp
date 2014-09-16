@@ -11,10 +11,9 @@
 	<button id="random" data-content="<%= @length %>" class="pure-button"><i class="fa fa-random fa-lg"></i></button>
 </div>
 <div class="container" id="movie-list">
-<% @movie.each_slice(5) do |slice| %>
 	<div class="row">
-		<% slice.each do |item| %>
-			<div class="movie-col">
+<% @movie.each do |item| %>
+			<div class="movie-col col-md-3 col-sm-4">
 				<div class="movie-info" id="<%= "#{item.id}" %>">
           		<%= link_to movie_path(item.id) do %>
             		<%= image_tag("#{@configuration.base_url}w185#{item.poster_path}", size: "193x289") if item.poster_path %>
@@ -37,9 +36,8 @@
           			</div>
           		</div>
           	</div>
-      	 <% end %>
-     </div>
 <% end %>
+     </div>
 </div>
 <div class="scroll-top-wrapper ">
     <span class="scroll-top-inner">

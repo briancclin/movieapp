@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
+//= require bootstrap
 //= require autocomplete-rails
 //= require turbolinks
 //= require tipped
@@ -20,5 +21,4 @@
 //= require jquery.lazyload
 //= require jquery.scrollTo
 //= require custom
-//= require bootstrap
 //= require_tree .

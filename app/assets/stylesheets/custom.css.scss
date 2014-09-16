@@ -4,6 +4,8 @@ body {
   padding-top: 140px;
 }
 
+.ui-autocomplete { position: absolute; cursor: default;z-index:5000 !important;} 
+
 /* header */
 
   /* navbar */
@@ -13,6 +15,10 @@ body {
     padding-top: 20px;
   }
   
+    #brian-brand {
+      padding-left: 0;
+    }
+   
     /* logo */
     #logo {
       float: left;
@@ -29,6 +35,10 @@ body {
     }
 
     /* search bar */
+    #navbar-search {
+      margin-bottom: 0;
+      border-bottom: 0;
+    }
     #search-bar {
       width: 262px;
       #search-button {
@@ -56,6 +66,7 @@ body {
 
 /* movie index */
 
+@media (min-width: 1200px) {
 .movie-col {
   width: 20%;
   float: left;
@@ -65,6 +76,7 @@ body {
   padding-right: 15px;
   display: inline-block;
   padding-top: 50px;
+}
 }
 
 .movie-info {
@@ -108,8 +120,12 @@ body {
   border-width: 5px;
 }
 
+#sort-bar{
+  height:41px;
+}
+
 button#random {
-  float:right;
+  float: right;
 }
 
 /* movie show */
