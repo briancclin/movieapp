@@ -68,6 +68,37 @@ body {
 
 #sort-button{
   padding:0;
+  background: none;
+}
+
+.carousel-control .control-left,
+.carousel-control .control-right {
+  position: absolute;
+  top: 50%;
+  z-index: 5;
+  display: inline-block;
+}
+.carousel-control .control-left {
+  left: 50%;
+}
+.carousel-control .control-right {
+  right: 50%;
+}
+
+#movie-carousel{
+  height:289px;
+    position: relative;
+    top: 17px;
+}
+
+.item > .movie-info {
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+  .movie-name {
+    width: auto;
+    padding: 1px;
+  }
 }
 
 @media (min-width: 1200px) {

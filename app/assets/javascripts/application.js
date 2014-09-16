@@ -20,5 +20,6 @@
 //= require imagesloaded.pkgd.min
 //= require jquery.lazyload
 //= require jquery.scrollTo
+//= require jquery.mobile.custom
 //= require custom
 //= require_tree .
