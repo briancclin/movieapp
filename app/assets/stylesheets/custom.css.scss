@@ -66,6 +66,10 @@ body {
 
 /* movie index */
 
+#sort-button{
+  padding:0;
+}
+
 @media (min-width: 1200px) {
 .movie-col {
   width: 20%;
@@ -120,12 +124,12 @@ body {
   border-width: 5px;
 }
 
-#sort-bar{
-  height:41px;
-}
-
 button#random {
   float: right;
+}
+
+#toggle-button{
+  margin-right: 30px;
 }
 
 /* movie show */
@@ -190,8 +194,8 @@ button#random {
     width: 50px;
     height: 48px;
     line-height: 48px;
-    right: 30px;
-    bottom: 30px;
+    right: 15px;
+    bottom: 15px;
     padding-top: 2px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;

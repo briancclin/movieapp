@@ -42,17 +42,11 @@ function sortMovies(sortKey, method) {
 
 	elems.sort(comparator);
 	var rows = $('.row');
-	var count = 0;
 	var curr  = 0;
 	for(var i = 0; i < rows.length; i++)
 	{
-    	for(; curr < elems.length; curr++, count++)
+    	for(; curr < elems.length; curr++)
     	{
-       		if(count > 4)
-        	{
-            	count = 0;
-            	break;
-        	}
         	$('.row').eq(i).append(elems[curr]);
     	}
 	}
@@ -88,17 +82,11 @@ function sortMoviesNum(sortKey, method) {
 
 	elems.sort(comparator);
 	var rows = $('.row');
-	var count = 0;
 	var curr  = 0;
 	for(var i = 0; i < rows.length; i++)
 	{
-    	for(; curr < elems.length; curr++, count++)
+    	for(; curr < elems.length; curr++)
     	{
-       		if(count > 4)
-        	{
-            	count = 0;
-            	break;
-        	}
         	$('.row').eq(i).append(elems[curr]);
     	}
 	}
@@ -117,4 +105,34 @@ function buttonHighlight(buttonName) {
 		else
 			$(value).removeClass("pure-button-active");
 	});
+}
+
+function sortatoz(){
+	sortMovies($("button#atoz").data("sortKey"),$("button#atoz").data("method"));
+	buttonHighlight("button#atoz");
+}
+
+function sortztoa(){
+	sortMovies($("button#ztoa").data("sortKey"),$("button#ztoa").data("method"));
+	buttonHighlight("button#ztoa");
+}
+
+function sortoldest(){
+	sortMovies($("button#yearup").data("sortKey"),$("button#yearup").data("method"));
+	buttonHighlight("button#yearup");
+}
+
+function sortnewest(){
+	sortMovies($("button#yeardown").data("sortKey"),$("button#yeardown").data("method"));
+	buttonHighlight("button#yeardown");
+}
+
+function sortimdb(){
+	sortMovies($("button#imdb").data("sortKey"),$("button#imdb").data("method"));
+	buttonHighlight("button#imdb");
+}
+
+function sortrt(){
+	sortMoviesNum($("button#rotten").data("sortKey"),$("button#rotten").data("method"));
+	buttonHighlight("button#rotten");
 }

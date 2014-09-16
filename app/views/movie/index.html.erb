@@ -1,19 +1,34 @@
 <% provide(:title, 'Movies') %>
 <body style="background-color: #D3D3D3">
 <div class="container">
-	<font size="5"<b>Sort By</b></font>
-	<button id="atoz" class="pure-button pure-button-active">A-Z</button>
-	<button id="ztoa" class="pure-button">Z-A</button>
-	<button id="yearup" class="pure-button">Oldest</button>
-	<button id="yeardown" class="pure-button">Newest</button>
-	<button id="imdb" class="pure-button">IMDb Rating</button>
-	<button id="rotten" class="pure-button">RT rating</button>
+	<font size="3"<b>Sort By</b></font>
+	<div class="btn-group hidden-xs">
+		<button id="atoz" class="pure-button pure-button-active">A-Z</button>
+		<button id="ztoa" class="pure-button">Z-A</button>
+		<button id="yearup" class="pure-button">Oldest</button>
+		<button id="yeardown" class="pure-button">Newest</button>
+		<button id="imdb" class="pure-button">IMDb Rating</button>
+		<button id="rotten" class="pure-button">RT rating</button>
+	</div>
+	<div class="btn-group visible-xs-inline-block">
+  <button type="button" id="sort-button" class="pure-button dropdown-toggle" data-toggle="dropdown">
+    <i class="fa fa-lg fa-toggle-down"></i>
+  </button>
+	<ul class="dropdown-menu" role="menu">
+		<li><a href="#" onclick="sortatoz()">A to Z</a></li>
+    	<li><a href="#" onclick="sortztoa()">Z to A</a></li>
+    	<li><a href="#" onclick="sortoldest()">Oldest</a></li>
+    	<li><a href="#" onclick="sortnewest()">Newest</a></li>
+    	<li><a href="#" onclick="sortimdb()">IMDb Rating</a></li>
+    	<li><a href="#" onclick="sortrt()">RT Rating</a></li>
+  </ul>
+ </div>
 	<button id="random" data-content="<%= @length %>" class="pure-button"><i class="fa fa-random fa-lg"></i></button>
 </div>
 <div class="container" id="movie-list">
 	<div class="row">
 <% @movie.each do |item| %>
-			<div class="movie-col col-md-3 col-sm-4">
+			<div class="movie-col col-md-3 col-sm-4 col-xs-6" id="movie-col">
 				<div class="movie-info" id="<%= "#{item.id}" %>">
           		<%= link_to movie_path(item.id) do %>
             		<%= image_tag("#{@configuration.base_url}w185#{item.poster_path}", size: "193x289") if item.poster_path %>
@@ -87,32 +102,32 @@ insertButtonInfo('button#imdb', ".imdb-rating", "desc");
 insertButtonInfo('button#rotten', ".rotten-rating", "desc");
 
 $("button#atoz").click(function() {
-	sortMovies($(this).data("sortKey"),$(this).data("method"))
+	sortMovies($(this).data("sortKey"),$(this).data("method"));
 	buttonHighlight("button#atoz");
 });
 
 $("button#ztoa").click(function() {
-	sortMovies($(this).data("sortKey"),$(this).data("method"))
+	sortMovies($(this).data("sortKey"),$(this).data("method"));
 	buttonHighlight("button#ztoa");
 });
 
 $("button#yearup").click(function() {
-	sortMovies($(this).data("sortKey"),$(this).data("method"))
+	sortMovies($(this).data("sortKey"),$(this).data("method"));
 	buttonHighlight("button#yearup");
 });
 
 $("button#yeardown").click(function() {
-	sortMovies($(this).data("sortKey"),$(this).data("method"))
+	sortMovies($(this).data("sortKey"),$(this).data("method"));
 	buttonHighlight("button#yeardown");
 });
 
 $("button#imdb").click(function() {
-	sortMovies($(this).data("sortKey"),$(this).data("method"))
+	sortMovies($(this).data("sortKey"),$(this).data("method"));
 	buttonHighlight("button#imdb");
 });
 
 $("button#rotten").click(function() {
-	sortMoviesNum($(this).data("sortKey"),$(this).data("method"))
+	sortMoviesNum($(this).data("sortKey"),$(this).data("method"));
 	buttonHighlight("button#rotten");
 });
 
