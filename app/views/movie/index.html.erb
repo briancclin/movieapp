@@ -15,23 +15,22 @@
     <i class="fa fa-lg fa-caret-down"></i>
   </button>
 	<ul class="dropdown-menu" role="menu">
-		<li><a href="#" onclick="sortatoz()">A to Z</a></li>
-    	<li><a href="#" onclick="sortztoa()">Z to A</a></li>
-    	<li><a href="#" onclick="sortoldest()">Oldest</a></li>
-    	<li><a href="#" onclick="sortnewest()">Newest</a></li>
-    	<li><a href="#" onclick="sortimdb()">IMDb Rating</a></li>
-    	<li><a href="#" onclick="sortrt()">RT Rating</a></li>
+		<li id="atoz" class="active"><a href="javascript:void(0)" onclick="sortatoz()">A to Z</a></li>
+    	<li id="ztoa"><a href="javascript:void(0)" onclick="sortztoa()">Z to A</a></li>
+    	<li id="yearup"><a href="javascript:void(0)" onclick="sortoldest()">Oldest</a></li>
+    	<li id="yeardown"><a href="javascript:void(0)" onclick="sortnewest()">Newest</a></li>
+    	<li id="imdb" ><a href="javascript:void(0)" onclick="sortimdb()">IMDb Rating</a></li>
+    	<li id="rotten" ><a href="javascript:void(0)" onclick="sortrt()">RT Rating</a></li>
   </ul>
  </div>
-	<button id="random" data-content="<%= @length %>" class="pure-button hidden-xs"><i class="fa fa-random fa-lg"></i></button>
-	<button id="random-mobile" data-content="<%= @length %>" class="pure-button visible-xs-inline-block"><i class="fa fa-random fa-lg"></i></button>
+	<button id="random" data-content="<%= @length %>" class="pure-button"><i class="fa fa-random fa-lg"></i></button>
 </div>
 
 
-<div class="container hidden-xs" id="movie-list">
+<div class="container" id="movie-list">
 	<div class="row">
 		<% @movie.each do |item| %>
-			<div class="movie-col col-md-3 col-sm-4 col-xs-6" id="movie-col">
+			<div class="movie-col col-md-3 col-sm-4 col-xs-6 movie-col-xs" id="movie-col">
 				<div class="movie-info" id="<%= "#{item.id}" %>">
           		<%= link_to movie_path(item.id) do %>
             		<%= image_tag("#{@configuration.base_url}w185#{item.poster_path}", size: "193x289") if item.poster_path %>
@@ -41,13 +40,13 @@
           			<div class="ratings">
           				<% imdb_path = "http://www.imdb.com/title/tt" + item.imdb_id.to_s %>
           					<%= link_to imdb_path do %>
-          						<%= image_tag("imdb.png", size: "53x25", id: "imdb_image") %>
+          						<%= image_tag("imdb.png", size: "53x25", id: "imdb-image") %>
           					<% end %>
           					<h4 class="imdb-rating"><%= item.imdb_rating %></h4>
           					<%= link_to item.rotten_link do %>
           						<% if item.rotten_rating > 0 %>
           							<% img_src = get_rotten_image(item.rotten_rating, item.certified_fresh) %>
-          							<%= image_tag(img_src, size: "31x34") %>
+          							<%= image_tag(img_src, size: "31x34", id: "rotten-image") %>
           						<% end %>
           					<% end %>
           			<h4 class="rotten-rating"><%= get_rotten_text(item.rotten_rating) %></h4>
@@ -58,53 +57,6 @@
      </div>
 </div>
 
-<div class="container visible-xs">
-<div id="movie-carousel" class="carousel" data-ride="carousel">
-
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner">
-  	<% @movie.each do |item| %>
-  	<% if item.id == 1 %>
-  		<div class ="item active">
-  	<% else %>	
-    <div class="item">
-    <% end %>
-    	<div class="movie-info" id="<%= "#{item.id}" %>">
-   	<%= link_to movie_path(item.id) do %>
-            		<%= image_tag("#{@configuration.base_url}w185#{item.poster_path}", size: "123x185", :class => "not-lazy") if item.poster_path %>
-          		<% end %>
-       <h5 class="movie-name" data-content="<h5><%= item.name %></h5>"><%= item.name %></h5>
-          			<h5 class="movie-year">(<%= item.year %>)</h5>
-          			<div class="ratings">
-          				<% imdb_path = "http://www.imdb.com/title/tt" + item.imdb_id.to_s %>
-          					<%= link_to imdb_path do %>
-          						<%= image_tag("imdb.png", size: "42x20") %>
-          					<% end %>
-          					<h5 class="imdb-rating"><%= item.imdb_rating %></h5>
-          					<%= link_to item.rotten_link do %>
-          						<% if item.rotten_rating > 0 %>
-          							<% img_src = get_rotten_image(item.rotten_rating, item.certified_fresh) %>
-          							<%= image_tag(img_src, size: "25x27") %>
-          						<% end %>
-          					<% end %>
-          			<h5 class="rotten-rating"><%= get_rotten_text(item.rotten_rating) %></h5>
-          			</div>
-          			</div>
-    </div>
-    <% end %>
-  </div>
-
-  <!-- Controls -->
-  <a class="left carousel-control" href="#movie-carousel" role="button" data-slide="prev">
-    <span class="control-left fa fa-lg fa-angle-left"></span>
-  </a>
-  <a class="right carousel-control" href="#movie-carousel" role="button" data-slide="next">
-    <span class="control-right fa fa-lg fa-angle-right"></span>
-  </a>
-</div>
-</div>
-
-
 <div class="scroll-top-wrapper ">
     <span class="scroll-top-inner">
         <i class="fa fa-2x fa-arrow-circle-up"></i>
@@ -113,6 +65,20 @@
 </body>
 <script>
 $(document).ready(function() {
+					//Enable swiping...
+					$(".row, .movie-info").swipe( {
+						//Generic swipe handler for all directions
+						swipeUp:function(event, direction, distance, duration, fingerCount, fingerData) {
+							window.scrollBy(0,310);
+						},
+						swipeDown:function(event, direction, distance, duration, fingerCount, fingerData) {
+							window.scrollBy(0,-310);
+						},
+						threshold: 0,
+						allowPageScroll: "Vertical"
+						
+					});
+	
 	/* tooltip */
     Tipped.create('.movie-name', function() {
     	return $(this).data('content')},
@@ -142,20 +108,7 @@ $(document).ready(function() {
     	skip_invisible : false
 	});
     
-});
-
-$('.carousel').carousel({
-		interval: false
-	});
-
- $("#movie-carousel").swiperight(function() {  
-    		  $(this).carousel('prev');  
-	    		});  
-		   $("#movie-carousel").swipeleft(function() {  
-		      $(this).carousel('next');  
-	   });  
-	   
-/* sorting */
+    /* sorting */
 insertButtonInfo('button#atoz', ".movie-name", "asc");
 insertButtonInfo('button#ztoa', ".movie-name", "desc");
 insertButtonInfo('button#yearup', ".movie-year", "asc");
@@ -197,14 +150,12 @@ $("button#random").click(function() {
 	$(".movie-info").removeClass("movie-info-chosen");
 	var num = Math.floor((Math.random() * $(this).data('content')) + 1);
 	var input = ".movie-info#" + num.toString();
-	console.log(input);
 	$.scrollTo( $(input).offset().top - 200, 0);
 	$(input).addClass("movie-info-chosen");
 });
-
-$("button#random-mobile").click(function() {
-	var num = Math.floor((Math.random() * $(this).data('content')) + 1);
-	$('.carousel').carousel(num);
+    
 });
+	  
+
 </script>
 			

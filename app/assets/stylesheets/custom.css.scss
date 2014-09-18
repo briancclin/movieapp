@@ -71,36 +71,6 @@ body {
   background: none;
 }
 
-.carousel-control .control-left,
-.carousel-control .control-right {
-  position: absolute;
-  top: 50%;
-  z-index: 5;
-  display: inline-block;
-}
-.carousel-control .control-left {
-  left: 50%;
-}
-.carousel-control .control-right {
-  right: 50%;
-}
-
-#movie-carousel{
-  height:289px;
-    position: relative;
-    top: 17px;
-}
-
-.item > .movie-info {
-  margin: 0 auto;
-  padding: 0;
-  width: 100%;
-  .movie-name {
-    width: auto;
-    padding: 1px;
-  }
-}
-
 @media (min-width: 1200px) {
 .movie-col {
   width: 20%;
@@ -114,10 +84,43 @@ body {
 }
 }
 
+@media (max-width: 512px) {
+.movie-col-xs {
+  width: 100%;
+  float: left;
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  display: inline-block;
+  .movie-name {
+    padding-bottom: 2px;
+  }
+  .movie-info > a > img {
+    width: 124px;
+    height: 185px;
+  }
+  #imdb-image {
+    width: 42px;
+    height: 20px;
+  }
+  #rotten-image {
+    width: 25px;
+    height: 27px;
+  }
+  .movie-info{
+    padding: 10px;
+    height: auto;
+  }
+  
+}
+}
+
 .movie-info {
   padding: 17px;
   display: inline-block;
   text-align: center;
+  height: 420px;
   h4 {
     font-weight: bold;
   }
@@ -149,8 +152,10 @@ a > img#imdb_image {
   margin: 2% 0 2% 0;
 }
 
+@media(min-width: 512px){
 .movie-info-hover, .movie-info:hover, .movie-info:focus {
   box-shadow: 10px 10px 5px #888888;
+}
 }
 
 .movie-info-chosen {

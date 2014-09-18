@@ -13,13 +13,13 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
-//= require bootstrap
+//= require bootstrap.min
 //= require autocomplete-rails
 //= require turbolinks
 //= require tipped
 //= require imagesloaded.pkgd.min
-//= require jquery.lazyload
+//= require jquery.lazyload.min
 //= require jquery.scrollTo
-//= require jquery.mobile.custom
+//= require jquery.touchSwipe.min
 //= require custom
 //= require_tree .
