@@ -139,6 +139,12 @@ body {
   display: inline-block;
   .movie-name {
     padding-bottom: 2px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  .movie-year{
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
   #movie-image {
     width: 124px;
@@ -154,6 +160,7 @@ body {
   }
   .movie-info{
     height: auto;
+    padding-top:0px;
   }
   
 }

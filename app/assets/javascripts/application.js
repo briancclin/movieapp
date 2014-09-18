@@ -21,5 +21,5 @@
 //= require jquery.lazyload.min
 //= require jquery.scrollTo
 //= require jquery.touchSwipe.min
-//= require custom
+//= require custom.min
 //= require_tree .
