@@ -67,19 +67,22 @@
 </body>
 <script>
 $(document).ready(function() {
-					//Enable swiping...
-					$(".row").swipe( {
-						//Generic swipe handler for all directions
-						swipeUp:function(event, direction, distance, duration, fingerCount, fingerData) {
-							window.scrollBy(0,292);
-						},
-						swipeDown:function(event, direction, distance, duration, fingerCount, fingerData) {
-							window.scrollBy(0,-292);
-						},
-						threshold: 0,
-						allowPageScroll: "Vertical"
+	
+	//Enable swiping...
+	$(".row").swipe( {
+		//Generic swipe handler for all directions
+		swipeUp:function(event, direction, distance, duration, fingerCount, fingerData) {
+			window.scrollBy(0,322);
+		},
+		
+		swipeDown:function(event, direction, distance, duration, fingerCount, fingerData) {
+			window.scrollBy(0,-322);
+		},
+		
+		threshold: 0,
+		allowPageScroll: "Vertical"
 						
-					});
+	});
 	
 	/* tooltip */
     Tipped.create('.movie-name', function() {
