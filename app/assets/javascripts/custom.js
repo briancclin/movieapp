@@ -53,7 +53,8 @@ function sortMovies(sortKey, method) {
 /* lazy load images */
     $("img.lazy").lazyload({
     	effect : "fadeIn",
-    	threshold : 400
+    	threshold : 400,
+    	failure_limit : 5
 	});
 }
 
@@ -93,7 +94,8 @@ function sortMoviesNum(sortKey, method) {
 /* lazy load images */
     $("img.lazy").lazyload({
     	effect : "fadeIn",
-    	threshold : 400
+    	threshold : 400,
+    	failure_limit : 5
 	});
 }
 
