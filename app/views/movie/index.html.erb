@@ -1,7 +1,7 @@
 <% provide(:title, 'Movies') %>
 <body style="background-color: #D3D3D3">
 <div class="container">
-	<font size="3"<b>Sort By</b></font>
+	<font size="3"<b>Sort By: </b></font>
 	
 	<div class="btn-group hidden-xs">
 		<button id="atoz" class="pure-button pure-button-active">A-Z</button>
@@ -34,23 +34,34 @@
 			<div class="movie-col col-md-3 col-sm-4 col-xs-6 movie-col-xs" id="movie-col">
 				<div class="movie-info" id="<%= "#{item.id}" %>">
           		<%= link_to movie_path(item.id) do %>
-            		<%= image_tag("#{@configuration.base_url}w185#{item.poster_path}", size: "193x289", id:"movie-image") if item.poster_path %>
+            		<%= image_tag("#{@configuration.base_url}w185#{item.poster_path}", size: "185x278", id:"movie-image") if item.poster_path %>
           		<% end %>
           			<h4 class="movie-name" data-content="<h4><%= item.name %></h4>"><%= item.name %></h4>
           			<h4 class="movie-year">(<%= item.year %>)</h4>
           			<div class="ratings">
           				<% imdb_path = "http://www.imdb.com/title/tt" + item.imdb_id.to_s %>
-          					<%= link_to imdb_path do %>
-          						<%= image_tag("imdb.png", size: "53x25", id: "imdb-image") %>
+          				<%= link_to imdb_path do %>
+          					<% if item.rotten_rating > 0 %>
+          						<div id="imdb-ratings">
+          							<%= image_tag("imdb.png", size: "53x25", id: "imdb-image") %>
+          							<h4 class="imdb-rating"><%= item.imdb_rating %></h4>
+          						</div>
+          					<% else %>
+          						<div id="imdb-no_rt">
+          							<%= image_tag("imdb.png", size: "53x25", id: "imdb-image") %>
+          							<h4 class="imdb-rating"><%= item.imdb_rating %></h4>
+          						</div>	
           					<% end %>
-          					<h4 class="imdb-rating"><%= item.imdb_rating %></h4>
+          				<% end %>
+          				<% if item.rotten_rating > 0 %>
           					<%= link_to item.rotten_link do %>
-          						<% if item.rotten_rating > 0 %>
+          						<div id="rotten-ratings">
           							<% img_src = get_rotten_image(item.rotten_rating, item.certified_fresh) %>
           							<%= image_tag(img_src, size: "31x34", id: "rotten-image") %>
-          						<% end %>
+          							<h4 class="rotten-rating"><%= get_rotten_text(item.rotten_rating) %></h4>
+          						</div>
           					<% end %>
-          			<h4 class="rotten-rating"><%= get_rotten_text(item.rotten_rating) %></h4>
+          				<% end %>
           			</div>
           		</div>
           	</div>
@@ -67,22 +78,6 @@
 </body>
 <script>
 $(document).ready(function() {
-	
-	//Enable swiping...
-	$(".row").swipe( {
-		//Generic swipe handler for all directions
-		swipeUp:function(event, direction, distance, duration, fingerCount, fingerData) {
-			window.scrollBy(0,322);
-		},
-		
-		swipeDown:function(event, direction, distance, duration, fingerCount, fingerData) {
-			window.scrollBy(0,-322);
-		},
-		
-		threshold: 0,
-		allowPageScroll: "Vertical"
-						
-	});
 	
 	/* tooltip */
     Tipped.create('.movie-name', function() {
@@ -110,7 +105,8 @@ $(document).ready(function() {
     /* lazy load images */
     $("img.lazy").lazyload({
     	effect : "fadeIn",
-    	skip_invisible : false
+    	skip_invisible : false,
+    	failure_limit : 5
 	});
     
     /* sorting */

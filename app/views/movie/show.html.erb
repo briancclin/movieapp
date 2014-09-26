@@ -5,20 +5,31 @@
 		<div class ="row" id="row-show">
 			<div class="col-lg-3 col-md-3 col-sm-4 col-xs-3" id="movie-col-show">
 				<div class="movie-info" id="movie-info-show">
-					<%= image_tag("#{@configuration.base_url}w185#{@movie.poster_path}", width: "185", id:"movie-image-show") if @movie.poster_path %>
-					<div class="ratings" id="ratings-show">
-        				<% imdb_path = "http://www.imdb.com/title/tt" + @movie.imdb_id.to_s %>
+					<%= image_tag("#{@configuration.base_url}w185#{@movie.poster_path}", size: "185x278", id:"movie-image-show") if @movie.poster_path %>
+					<div class="ratings">
+          				<% imdb_path = "http://www.imdb.com/title/tt" + @movie.imdb_id.to_s %>
           				<%= link_to imdb_path do %>
-          					<%= image_tag("imdb.png", size: "71x34", id: "imdb-image-show") %>
-          				<% end %>
-          				<h4 class="imdb-rating" id="rating"><%= @imdb_rating %></h4>
-          				<%= link_to @movie.rotten_link do %>
-          					<% if @rotten_rating > 0 %>
-          						<% img_src = get_rotten_image(@rotten_rating, @movie.certified_fresh) %>
-          						<%= image_tag(img_src, size: "42x45", id: "rotten-image-show") %>
+          					<% if @movie.rotten_rating > 0 %>
+          						<div id="imdb-ratings-show">
+          							<%= image_tag("imdb.png", size: "53x25", id: "imdb-image-show") %>
+          							<h4 class="imdb-rating"><%= @movie.imdb_rating %></h4>
+          						</div>
+          					<% else %>
+          						<div id="imdb-no_rt">
+          							<%= image_tag("imdb.png", size: "53x25", id: "imdb-image-show") %>
+          							<h4 class="imdb-rating"><%= @movie.imdb_rating %></h4>
+          						</div>	
           					<% end %>
           				<% end %>
-          				<h4 class="rotten-rating" id="rating"><%= get_rotten_text(@rotten_rating) %></h4>
+          				<% if @movie.rotten_rating > 0 %>
+          					<%= link_to @movie.rotten_link do %>
+          						<div id="rotten-ratings-show">
+          							<% img_src = get_rotten_image(@movie.rotten_rating, @movie.certified_fresh) %>
+          							<%= image_tag(img_src, size: "31x34", id: "rotten-image-show") %>
+          							<h4 class="rotten-rating"><%= get_rotten_text(@movie.rotten_rating) %></h4>
+          						</div>
+          					<% end %>
+          				<% end %>
           			</div>
           		</div>
           	</div>	

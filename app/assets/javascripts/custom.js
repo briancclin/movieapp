@@ -13,7 +13,7 @@ function scrollToTop() {
     element = $('body');
     offset = element.offset();
     offsetTop = offset.top;
-    $('html, body').animate({scrollTop: offsetTop}, 300, 'linear');
+    $('html, body').animate({scrollTop: offsetTop}, 100, 'linear');
 }
 
 /* Button functions */

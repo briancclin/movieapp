@@ -1,7 +1,8 @@
 @import "bootstrap";
 
 body {
-  padding-top: 140px;
+  padding-top: 120px;
+  padding-bottom: 50px;
 }
 
 .ui-autocomplete { position: absolute; cursor: default;z-index:5000 !important;} 
@@ -42,22 +43,30 @@ body {
   #search-bar {
     width: 262px;
     #search-button {
-      border: #cccccc;
+      border: white;
       border-style: solid;
       border-width: 1px;
       height: 34px;
+      background: white;
+      z-index: 10;
     }
     #query_str {
-      width: 220px;
+      width: 300px;
+      border: white;
     }
   }
   
   /* nav right */    
   #movie-link, #home-link {
     color: #fff;
-    font-size: 1.3em;
+    font-size: 16px;
     position: relative;
     top: 0.5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    text-transform: uppercase;
+    font-family: "Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: bold;
   }
 
   #movie-link:hover, #home-link:hover {
@@ -85,7 +94,12 @@ body {
     padding: 17px;
     display: inline-block;
     text-align: center;
-  height: 420px;
+    height: 410px;
+    border-style: solid;
+    border-width: 1px 1px 3px 1px;
+    border-radius: 4px;
+    background-color: #fff;
+    border-color: #adadad;
   h4 {
     font-weight: bold;
   }
@@ -94,24 +108,77 @@ body {
     overflow: hidden;
     text-overflow: ellipsis;
     text-align: center;
-    width: 193px;
+    width: 185px;
+  }
+  .movie-year {
+    margin-left: -18px;
+    margin-right: -18px;
+    margin-top: -5px;
+    padding-bottom: 5px;
+    border-bottom-style: solid;
+    border-color: #adadad;
+    border-width: 1px 0;
   }
   .ratings{
+    margin-left: -18px;
+    margin-right: -18px;
      height:34px;
     .imdb-rating {
       display:inline;
     }
     .rotten-rating {
       display:inline;
-  }
+    }
+    a{
+      color:black;
+      text-decoration: none;
+    }
+    a:hover{
+      color: #428bca;
+    }
   }
 }
 
+#imdb-ratings{
+ border-right: 1px solid #d6d6d6;
+}
+
+#imdb-ratings{
+  width: 50%;
+  display:inline;
+  text-align: center;
+  padding: 18px 11px;
+}
+
+#rotten-ratings{
+  width: 50%;
+  display:inline;
+  text-align: center;
+  padding: 18px 14px;
+}
+
+#imdb-no_rt{
+  border-right:none;
+  width: 50%;
+  display:inline;
+  text-align: center;
+}
+
 .movie-info-chosen {
-  box-shadow: 10px 10px 5px #888888;
   border: #0088cc;
   border-style: solid;
-  border-width: 5px;
+  border-width: 3px;
+}
+
+@media(min-width: 512px){
+.movie-info-hover, .movie-info:hover, .movie-info:focus {
+  border: #0088cc;
+  border-style: solid;
+  border-width: 3px;
+  #imdb-ratings{
+    padding: 18px 13px 17px;
+  }
+}
 }
 
 /* responsive adjustments */
@@ -128,61 +195,116 @@ body {
 }
 }
 
+#movie-col{
+  padding-top:50px;
+}
+
+@media (max-width: 768px){
+  body{
+  padding-top: 140px;
+}
+}
+
 @media (max-width: 512px) {
+  .movie-info h4{
+    font-size: 14px;
+  }
+  
+#movie-list{
+  padding-left: 0px;
+}
+#movie-col{
+  padding-top: 5px;
+}
 .movie-col-xs {
-  width: 100%;
+  width: 45%;
   float: left;
   position: relative;
   min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-right: 5px;
   display: inline-block;
   .movie-name {
     padding-bottom: 2px;
     margin-top: 5px;
     margin-bottom: 5px;
+    width: 124px;
   }
   .movie-year{
     margin-top: 5px;
     margin-bottom: 5px;
+    border: none;
   }
   #movie-image {
     width: 124px;
     height: 185px;
   }
   #imdb-image {
-    width: 42px;
-    height: 20px;
+    width: 34px;
+    height: 16px;
   }
   #rotten-image {
-    width: 25px;
-    height: 27px;
+    width: 20px;
+    height: 22px;
+  }
+  #imdb-ratings, #rotten-ratings{
+    padding: 0px;
   }
   .movie-info{
     height: auto;
     padding-top:0px;
-    padding-bottom: 47px;
+    padding-bottom: 15px;
+    background: none;
+    border: none;
   }
   
 }
 }
 
-@media(min-width: 512px){
-.movie-info-hover, .movie-info:hover, .movie-info:focus {
-  box-shadow: 10px 10px 5px #888888;
-}
+/* movie show */
+ #imdb-ratings-show {
+    padding: 14px 13px 15px;
+    border-right: 1px solid #d6d6d6;
+    width: 50%;
+    display:inline;
+    text-align: center;
+  }
+  
+#rotten-ratings-show{
+  width: 50%;
+  display:inline;
+  text-align: center;
+  padding: 18px 17px;
 }
 
-/* movie show */
+#movie-info-show:hover {
+  border-style: solid;
+    border-width: 1px 1px 3px 1px;
+    border-radius: 4px;
+    background-color: #fff;
+    border-color: #adadad;
+}  
+  
 .col-lg-7 {
   h1, h3, h5 {
     text-align: center;
+  }
+  h1{
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  h3{
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  h5{
+    font-size: 20px;
   }
 }
 
 .col-lg-3#movie-col-show {
   .ratings{
     padding:10px 10px 10px 0px;
+    border-top: 1px solid #d6d6d6;
     top: 0;
   }
   .movie-info{
@@ -194,8 +316,8 @@ body {
 }
 
 .cast_information{
-  position: relative;
-  right: -3px;
+  text-align: left;
+  margin-left: 5px;
 }
 
 @media(max-width: 1200px){
@@ -213,12 +335,26 @@ body {
 }
 
 @media(max-width: 768px){
+  .col-lg-3#movie-col-show .ratings {
+    border: none;
+    text-align: center;
+    padding: 0px;
+    h4 {
+      font-size: 12px;
+    }
+  }
+   #imdb-ratings-show, #rotten-ratings-show{
+    padding: 0px;
+    border: none;
+  }
   #row-show{
     margin-left:-40px;
   }
-  #movie-info-show{
+  #movie-info-show, #movie-info-show:hover{
     padding: 0px;
     text-align: left;
+    background: none;
+    border: none;
   }
   .col-xs-6#movie-col-show {
     padding-left: 0px;
@@ -241,11 +377,19 @@ body {
 }
 
 @media (max-width: 512px) {
+#movie-info-all {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+#search-bar #query_str {
+      width: 220px;
+      border: white;
+    }
 .col-xs-3{
-  width: 60%;
+  width: 50%;
 }
 .col-xs-9{
-  width: 40%;
+  width: 50%;
 }
 .col-lg-7 h1{
     font-size: 20px;
@@ -258,17 +402,23 @@ body {
 }
 }
 
+@media (min-width: 512px){
+  #movie-info-all{
+  padding-left: 50px;
+  padding-right: 50px;
+  }
+}
 #movie-info-all {
   background-color: rgba(220,220,220,0.8);
   height: 100%;
-  padding-left: 50px;
-  padding-right: 50px;
   padding-top: 20px;
   padding-bottom: 10px;
-  border-radius: 50px;
-  font-weight: bold;
+  border-radius: 12px;
+  font-size: 20px;
   h2 {
     font-weight: bold;
+    font-size: 24px;
+    text-transform: uppercase;
   }
 }
 
@@ -285,8 +435,8 @@ body {
     width: 50px;
     height: 48px;
     line-height: 48px;
-    right: 15px;
-    bottom: 15px;
+    right: 30px;
+    bottom: 30px;
     padding-top: 2px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -309,3 +459,10 @@ body {
 .scroll-top-wrapper i.fa {
     line-height: inherit;
 }
+
+@media (max-width: 1366px) {
+  .scroll-top-wrapper {
+      right: 10px;
+      bottom: 10px;
+  }
+} 
