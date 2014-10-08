@@ -27,28 +27,20 @@ function sortMovies(sortKey, method) {
 	var map = elems.map(function(i, e) {
   	return { index: i, value: $(e).find(sortKey).text() };
 	});
-	var test = map.sort(function(a, b) {
+	var sorted = map.sort(function(a, b) {
 		if(method == 'asc')
   			return +(a.value > b.value) || +(a.value === b.value) - 1;
   		else
   			return +(a.value < b.value) || +(a.value === b.value) - 1;
 	});	
 	elems = map.map(function(e){
-  		return elems[test[e].index];
+  		return elems[sorted[e].index];
 });
 	var rows = $('.row');
-	var curr  = 0;
-	for(var i = 0; i < rows.length; i++)
-	{
-    	for(; curr < elems.length; curr++)
-    	{
-        	$('.row').eq(i).append(elems[curr]);
-    	}
-	}
+	rows.append(elems);
 /* lazy load images */
     $("img.lazy").lazyload({
     	effect : "fadeIn",
-    	threshold : 400,
     	failure_limit : 5
 	});
 }
@@ -61,28 +53,20 @@ function sortMoviesNum(sortKey, method) {
 			value = 0;
   	return { index: i, value: value };
 	});
-	var test = map.sort(function(a, b) {
+	var sorted = map.sort(function(a, b) {
 		if(method == 'asc')
   			return +(parseInt(a.value) > parseInt(b.value)) || +(parseInt(a.value) === parseInt(b.value)) - 1;
   		else
   			return +(parseInt(a.value) < parseInt(b.value)) || +(parseInt(a.value) === parseInt(b.value)) - 1;
 	});	
 	elems = map.map(function(e){
-  		return elems[test[e].index];
+  		return elems[sorted[e].index];
 });
 	var rows = $('.row');
-	var curr  = 0;
-	for(var i = 0; i < rows.length; i++)
-	{
-    	for(; curr < elems.length; curr++)
-    	{
-        	$('.row').eq(i).append(elems[curr]);
-    	}
-	}
+	rows.append(elems);
 /* lazy load images */
     $("img.lazy").lazyload({
     	effect : "fadeIn",
-    	threshold : 400,
     	failure_limit : 5
 	});
 }
