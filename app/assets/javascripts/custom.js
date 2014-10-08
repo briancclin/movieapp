@@ -24,23 +24,18 @@ function insertButtonInfo(button, sortKey, method) {
 
 function sortMovies(sortKey, method) {
 	var elems = $('.movie-col');
-	var comparator = function (a, b) {
-    	var result = 0;
-    
-    	if ($(a).find(sortKey).text() > $(b).find(sortKey).text()) {
-        	result = -1;
-    	} else {
-        	result = 1;
-    	}
-    
-    	if (method === 'asc') {
-        	result *= -1;
-    	}
-    
-    	return result;
-	};
-
-	elems.sort(comparator);
+	var map = elems.map(function(i, e) {
+  	return { index: i, value: $(e).find(sortKey).text() };
+	});
+	var test = map.sort(function(a, b) {
+		if(method == 'asc')
+  			return +(a.value > b.value) || +(a.value === b.value) - 1;
+  		else
+  			return +(a.value < b.value) || +(a.value === b.value) - 1;
+	});	
+	elems = map.map(function(e){
+  		return elems[test[e].index];
+});
 	var rows = $('.row');
 	var curr  = 0;
 	for(var i = 0; i < rows.length; i++)
@@ -60,28 +55,21 @@ function sortMovies(sortKey, method) {
 
 function sortMoviesNum(sortKey, method) {
 	var elems = $('.movie-col');
-	var comparator = function (a, b) {
-    	var result = 0;
-    	var left = ($(a).find(sortKey).text()).replace( /\D/g, '');
-    	if (left == "")
-    		left = 0;
-    	var right = ($(b).find(sortKey).text()).replace( /\D/g, '');
-    	if (right == "")
-    		right = 0;
-    	if (parseInt(left) > parseInt(right)) {
-        	result = -1;
-    	} else {
-        	result = 1;
-    	}
-    
-    	if (method === 'asc') {
-        	result *= -1;
-    	}
-    
-    	return result;
-	};
-
-	elems.sort(comparator);
+	var map = elems.map(function(i, e) {
+		var value = ($(e).find(sortKey).text()).replace( /\D/g, '');
+		if(value == "")
+			value = 0;
+  	return { index: i, value: value };
+	});
+	var test = map.sort(function(a, b) {
+		if(method == 'asc')
+  			return +(parseInt(a.value) > parseInt(b.value)) || +(parseInt(a.value) === parseInt(b.value)) - 1;
+  		else
+  			return +(parseInt(a.value) < parseInt(b.value)) || +(parseInt(a.value) === parseInt(b.value)) - 1;
+	});	
+	elems = map.map(function(e){
+  		return elems[test[e].index];
+});
 	var rows = $('.row');
 	var curr  = 0;
 	for(var i = 0; i < rows.length; i++)
