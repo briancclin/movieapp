@@ -62,15 +62,41 @@
 	</div>
 	
 	<h2>Cast</h2>
-	<table class="pure-table pure-table-horizontal table-striped">
-		<% @cast.first(5).each do |cast| %>
+	<table class="pure-table pure-table-horizontal table-striped" id="cast_table">
+		<% @cast_init.each do |cast| %>
 		<tr>
 			<td style="width:15%">
 				<%= image_tag("#{@configuration.base_url}w300#{cast['profile_path']}", width: "124" ) if cast['profile_path'] %>
-				<% unless cast['profile_path'] %><img src="http://placehold.it/154x154"><% end %>
+				<% unless cast['profile_path'] %><img src="http://placehold.it/124x186&text=+"><% end %>
 			</td>
 			<td>
-				<h4 class="cast_information"><%= cast['name'] %> as <%= cast['character'] %></h4>
+				<% if(cast['order'] != 4) %>
+					<h4 class="cast_information"><%= cast['name'] %> as <%= cast['character'] %></h4>
+				<% else %>
+					<h4 class="cast_information"><%= cast['name'] %> as <%= cast['character'] %></h4>
+					<button type="button" id="cast_button" onclick="fullcast()">
+    		<i class="fa fa-lg fa-caret-down"></i>
+  		</button>
+				<% end %>
+			</td>
+		</tr>
+		<% end %>
+		
+		<% @cast_rest.each do |cast| %>
+		<tr class="hidden" id="cast_rest">
+			<td style="width:15%">
+				<%= image_tag("#{@configuration.base_url}w300#{cast['profile_path']}", width: "124" ) if cast['profile_path'] %>
+				<% unless cast['profile_path'] %><img src="http://placehold.it/124x186&text=+"><% end %>
+			</td>
+			<td>
+				<% if(cast['order'] != (@cast.length+4)) %>
+					<h4 class="cast_information"><%= cast['name'] %> as <%= cast['character'] %></h4>
+				<% else %>
+					<h4 class="cast_information"><%= cast['name'] %> as <%= cast['character'] %></h4>
+					<button type="button" id="hidecast_button" class="hidden" onclick="hidecast()">	
+						<i class="fa fa-lg fa-caret-up"></i>
+  					</button>
+				<% end %>
 			</td>
 		</tr>
 		<% end %>
@@ -83,4 +109,19 @@
     $("img.lazy").lazyload({
     	effect : "fadeIn"
 	});
+	
+function fullcast()
+{
+	$("#cast_button").addClass("hidden");
+	$("tr#cast_rest").removeClass("hidden");
+	$("#hidecast_button").removeClass("hidden");
+}
+
+function hidecast()
+{
+	$("#hidecast_button").addClass("hidden");
+	$("tr#cast_rest").addClass("hidden");
+	$("#cast_button").removeClass("hidden");
+}
+
 </script>
