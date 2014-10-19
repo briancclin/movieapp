@@ -9,7 +9,15 @@ body {
   padding-top: 120px;
   padding-bottom: 50px;
   background-size: 100%;
+  background-position: 0px 69px;
 }
+
+@media (max-width: 768px) {
+  body{
+    background-position: 0px 133px;
+  }
+}
+
 
 .ui-autocomplete { position: absolute; cursor: default;z-index:5000 !important;} 
 
