@@ -17,8 +17,6 @@ class MovieInfo
           new_movie_arr.push(movie_name + "|" + movie_year)
         end
     end
-    #   f.puts "Hello, world. It's me again."
-    #  end
       return new_movie_arr
     end
    end
