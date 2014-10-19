@@ -41,7 +41,7 @@
           			<div class="ratings">
           				<% imdb_path = "http://www.imdb.com/title/tt" + item.imdb_id.to_s %>
           				<%= link_to imdb_path do %>
-          					<% if item.rotten_rating > 0 %>
+          					<% if item.rotten_rating >= 0 %>
           						<div id="imdb-ratings">
           							<%= image_tag("imdb.png", size: "53x25", id: "imdb-image") %>
           							<h4 class="imdb-rating"><%= item.imdb_rating %></h4>
@@ -53,7 +53,7 @@
           						</div>	
           					<% end %>
           				<% end %>
-          				<% if item.rotten_rating > 0 %>
+          				<% if item.rotten_rating >= 0 %>
           					<%= link_to item.rotten_link do %>
           						<div id="rotten-ratings">
           							<% img_src = get_rotten_image(item.rotten_rating, item.certified_fresh) %>

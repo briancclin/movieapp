@@ -50,7 +50,7 @@ function sortMoviesNum(sortKey, method) {
 	var map = elems.map(function(i, e) {
 		var value = ($(e).find(sortKey).text()).replace( /\D/g, '');
 		if(value == "")
-			value = 0;
+			value = -1;
   	return { index: i, value: value };
 	});
 	var sorted = map.sort(function(a, b) {
