@@ -67,7 +67,7 @@
 		<tr>
 			<td style="width:15%">
 				<%= image_tag("#{@configuration.base_url}w300#{cast['profile_path']}", width: "124" ) if cast['profile_path'] %>
-				<% unless cast['profile_path'] %><img src="http://placehold.it/124x186&text=+"><% end %>
+				<% unless cast['profile_path'] %><img src="http://placehold.it/124x186&text=No+Photo"><% end %>
 			</td>
 			<td>
 				<% if(cast['order'] != 4) %>
@@ -86,7 +86,7 @@
 		<tr class="hidden" id="cast_rest">
 			<td style="width:15%">
 				<%= image_tag("#{@configuration.base_url}w300#{cast['profile_path']}", width: "124" ) if cast['profile_path'] %>
-				<% unless cast['profile_path'] %><img src="http://placehold.it/124x186&text=+"><% end %>
+				<% unless cast['profile_path'] %><img src="http://placehold.it/124x186&text=No+Photo"><% end %>
 			</td>
 			<td>
 				<% if(cast['order'] != (@cast.length+4)) %>

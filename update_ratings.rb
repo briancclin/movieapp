@@ -10,7 +10,7 @@ movie.each do |item|
      rotten_id = movie_rotten.id
      rotten_rating = movie_rotten.ratings.critics_score
      item.update(rotten_id: rotten_id)
-  item.update(rotten_rating: rotten_rating)
+     item.update(rotten_rating: rotten_rating)
    end
 end
 
