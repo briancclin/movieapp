@@ -10,3 +10,10 @@ movie.each do |item|
    imdb_id = (moviedb.imdb_id).gsub(/[^\d]/, '')
    item.update(imdb_id: imdb_id)
 end
+
+movie = Movie.find_by_sql("SELECT * FROM movies WHERE imdb_id IS NULL")
+movie.each do |item|
+   moviedb = Tmdb::Movie.detail(item.themoviedb_id)
+   imdb_id = (moviedb.imdb_id).gsub(/[^\d]/, '')
+   item.update(imdb_id: imdb_id)
+end

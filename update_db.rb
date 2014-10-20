@@ -24,6 +24,6 @@ movie_arr.each do |movie|
   else
     fresh = false
   end
-  add_movie = Movie.new(name: movie_name, year: movie_year, themoviedb_id: movie_id, poster_path: poster_path, imdb_rating: imdb_rating, rotten_id: rotten_id, rotten_rating: rotten_rating, rotten_link: rotten_link, certified_fresh: fresh)
+  add_movie = Movie.new(name: movie_name, year: movie_year, imdb_id: imdb_id, themoviedb_id: movie_id, poster_path: poster_path, imdb_rating: imdb_rating, rotten_id: rotten_id, rotten_rating: rotten_rating, rotten_link: rotten_link, certified_fresh: fresh)
   add_movie.save
 end
