@@ -10,7 +10,7 @@
 	<div class="lightgray-block">
 		<div class="text-center index-block">
 			<p>On the MOVIES tab, there will be a list of all the movies.</p>
-			<p>You will have the ability to sort the movies. There is also a feature that randomly selects a movie for you.</p>
+			<p>You will have the ability to sort the movies and there is a button that randomly selects a movie for you.</p>
 		</div>
 		<img src="/assets/movies_tab.png" class="img-center img-home" id="img_movies_tab">
 		<div class="text-center index-block">
@@ -25,3 +25,10 @@
 	</div>
 </div>
 </body>
+<script>
+ /* lazy load images */
+    $("img.lazy").lazyload({
+    	effect : "fadeIn",
+    	skip_invisible : false
+	});
+</script>
