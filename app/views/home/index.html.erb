@@ -26,9 +26,10 @@
 </div>
 </body>
 <script>
+$(document).ready(function() {
  /* lazy load images */
-    $("img.lazy").lazyload({
-    	effect : "fadeIn",
-    	skip_invisible : false
+    $("img.img-center").lazyload({
+    	effect : "fadeIn"
 	});
+});
 </script>
