@@ -23,7 +23,18 @@ body {
     margin-left: auto;
     margin-right: auto;}
 
-.ui-autocomplete { position: absolute; cursor: default;z-index:5000 !important;} 
+.ui-autocomplete { 
+  position: absolute; 
+  cursor: default;
+  z-index:5000 !important;
+  } 
+
+.ui-menu-item{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.428571429;
+  
+}
 
 /* header */
 
