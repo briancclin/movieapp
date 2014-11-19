@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   
   get 'search/error'
 
-  resources :home
+  resources :about
   
   resources :movie do
     get :autocomplete_movie_name, :on => :collection
