@@ -4,11 +4,13 @@ Rails.application.routes.draw do
   
   get 'search/error'
 
+  resources :home
+  
   resources :movie do
     get :autocomplete_movie_name, :on => :collection
   end
   
-  root  'home#index'
+  root  'movie#index'
   
 
   # The priority is based upon order of creation: first created -> highest priority.
