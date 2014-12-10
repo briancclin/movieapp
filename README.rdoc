@@ -1,5 +1,14 @@
 == README
 
+Initial add of db
+1)heroku run "rake db:migrate"
+2)movies_text.rb
+3)add_ids.rb
+4)update_empty.rb
+5)update_ratings.rb
+6)add_rotten_info.rb
+
+
 To update:
 1) rails r create_moviefile.rb (updates the movies.txt file)
 2) rails r update_db.rb (updates the database)
