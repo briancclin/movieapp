@@ -3,7 +3,7 @@ require 'jquery-lazy-images'
 class MovieController < ApplicationController
  autocomplete :movie, :name, :full => true, :extra_data => [:year], :display_value => :movie_search_result
   def index
-    @movie = Movie.all.sort()
+    @movie = Movie.all.order(name: :asc)
     @length = Movie.count
   end
   def show
@@ -12,6 +12,9 @@ class MovieController < ApplicationController
     @imdb_rating = @movie.imdb_rating
     @trailers = Tmdb::Movie.trailers(@movie.themoviedb_id)
     @cast = Tmdb::Movie.casts(@movie.themoviedb_id)
+    @cast_init = @cast.first(5)
+    @cast.shift(5)
+    @cast_rest = @cast
     @crew = Tmdb::Movie.credits(@movie.themoviedb_id)['crew']
     @crew.each do |person|
       if person['job'] == "Director"

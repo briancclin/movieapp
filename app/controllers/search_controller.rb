@@ -4,8 +4,9 @@ class SearchController < ApplicationController
       if(movie != "")
         paranthesis = movie[/\((.+)\)/] 
         if(paranthesis != nil)
+          movie_year = paranthesis.tr('()','').strip
           movie_name = movie.gsub(paranthesis,'').strip
-          movie = Movie.where(name: movie_name).take
+          movie = Movie.where(name: movie_name, year: movie_year).take
           redirect_to :controller => 'movie', :action => 'show', :id => movie.id
         else
           redirect_to :controller => 'search', :action => 'error'

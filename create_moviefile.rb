@@ -1,3 +1,5 @@
+#create movies.txt
+
 movie_list = Dir.entries("D:/Movies")
 
 #Remove home and previous directory
