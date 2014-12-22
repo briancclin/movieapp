@@ -276,7 +276,7 @@ body {
   border-width: 3px;
 }
 
-@media(min-width: 512px){
+@media(min-width: 768px){
 .movie-info-hover, .movie-info:hover, .movie-info:focus {
   border: #0088cc;
   border-style: solid;
@@ -306,21 +306,87 @@ body {
 }
 
 @media (max-width: 768px){
+  @media(min-width: 512px)
+  {
+    .navbar, .container#button-row, button#random{
+      visibility: hidden;
+    }
+    button#random{
+      margin-top: -50px;
+    }
+    body {
+      padding-top: 0px;
+    }
+    #movie-col{
+    padding-top: 10px;
+}
+  }
   body{
   padding-top: 140px;
+}
+
+.movie-info{
+    height: auto;
+    padding-top:0px;
+    padding-bottom: 15px;
+    padding-left: 5px;
+    background: none;
+    border: none;
+  }
+  
+  .movie-col-xs {
+  width: 25%;
+  float: left;
+  position: relative;
+  min-height: 1px;
+  padding-right: 5px;
+  display: inline-block;
+  .movie-name {
+    padding-bottom: 2px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 124px;
+  }
+  .movie-year{
+    margin-top: 3px;
+    margin-bottom: 2px;
+    border: none;
+  }
+  #movie-image {
+    width: 124px;
+    height: 185px;
+  }
+  #imdb-image {
+    width: 34px;
+    height: 16px;
+  }
+  #rotten-image {
+    width: 20px;
+    height: 22px;
+  }
+  #imdb-ratings, #rotten-ratings{
+    padding: 0px;
+  }
+  
 }
 }
 
 @media (max-width: 512px) {
-  .movie-info h4{
+  .movie-info
+  {
+   padding-left: 22px;
+   h4{
     font-size: 14px;
   }
   
-#movie-list{
-  padding-left: 0px;
 }
+
 #movie-col{
   padding-top: 5px;
+}
+
+#movie-list{
+  padding-left: 0px;
 }
 .movie-col-xs {
   width: 45%;
@@ -354,13 +420,6 @@ body {
   }
   #imdb-ratings, #rotten-ratings{
     padding: 0px;
-  }
-  .movie-info{
-    height: auto;
-    padding-top:0px;
-    padding-bottom: 15px;
-    background: none;
-    border: none;
   }
   
 }
