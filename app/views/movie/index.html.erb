@@ -1,7 +1,7 @@
 <% provide(:title, 'Movies') %>
 <body style="background-color: #D3D3D3">
 <div class="container">
-	<font size="3"<b>Sort By: </b></font>
+	<font size="4"<b>Sort By: </b></font>
 	
 	<div class="btn-group hidden-xs">
 		<button id="atoz" class="pure-button pure-button-active">A-Z</button>
@@ -36,8 +36,8 @@
           		<%= link_to movie_path(item.id) do %>
             		<%= image_tag("#{@configuration.base_url}w185#{item.poster_path}", size: "185x278", id:"movie-image") if item.poster_path %>
           		<% end %>
-          			<h4 class="movie-name" data-content="<strong><%= item.name %></strong>"><%= item.name %></h4>
-          			<h4 class="movie-year"><strong>(<%= item.year %>)</strong></h4>
+          			<h4 class="movie-name" data-content="<h4><%= item.name %></h4>"><%= item.name %></h4>
+          			<h4 class="movie-year">(<%= item.year %>)</h4>
           			<div class="ratings">
           				<% imdb_path = "http://www.imdb.com/title/tt" + item.imdb_id.to_s %>
           				<%= link_to imdb_path do %>
@@ -81,7 +81,9 @@ $(document).ready(function() {
 	
 	/* tooltip */
     Tipped.create('.movie-name', function() {
-    	return $(this).data('content')});
+    	return $(this).data('content')}, {
+    		size: 'large',
+    	});
     
     Tipped.create('button#random', function() {
     	return "<h5>Roll for a random movie</h5>"},

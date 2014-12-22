@@ -1,8 +1,8 @@
 @import "bootstrap";
 
 @font-face {
-   font-family: 'Pacifico'; 
-   src: url('Pacifico.ttf');
+   font-family: 'SourceSansPro'; 
+   src: url('SourceSansPro-Regular.otf');
 } 
 
 body {
@@ -10,6 +10,8 @@ body {
   padding-bottom: 50px;
   background-size: 100%;
   background-position: 0px 69px;
+  font-family: 'SourceSansPro';
+  font-size: 16px;
 }
 
 @media (max-width: 768px) {
@@ -30,7 +32,7 @@ body {
   } 
 
 .ui-menu-item{
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'SourceSansPro';
   font-size: 18px;
   line-height: 1.428571429;
   
@@ -47,14 +49,13 @@ body {
   
   /* logo */
   #logo {
-    font-family: 'Pacifico'; 
+    font-family: 'SourceSansPro'; 
     float: left;
-    font-size: 2.9em;
+    font-size: 2.7em;
     color: #fff;
     font-weight: bold;
     margin-bottom: -8px;
-    line-height: 1;
-    letter-spacing: 2px;
+    line-height: 1.1;
   }
   
   #logo:hover {
@@ -90,13 +91,13 @@ body {
   /* nav right */    
   #movie-link, #home-link {
     color: #fff;
-    font-size: 16px;
+    font-size: 20px;
     position: relative;
     top: 0.5px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     text-transform: uppercase;
-    font-family: "Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: 'SourceSansPro';
     font-weight: bold;
   }
 
@@ -106,6 +107,10 @@ body {
   
   #toggle-button{
     margin-right: 30px;
+  }
+  
+  .form-control {
+    font-size: 18px;
   }
   
 
@@ -201,20 +206,18 @@ body {
     border-radius: 4px;
     background-color: #fff;
     border-color: #adadad;
-  h4 {
-    font-weight: bold;
-  }
   .movie-name {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     text-align: center;
     width: 185px;
+    line-height: 1.2;
   }
   .movie-year {
     margin-left: -18px;
     margin-right: -18px;
-    margin-top: -5px;
+    margin-top: -8px;
     padding-bottom: 5px;
     border-bottom-style: solid;
     border-color: #adadad;
@@ -248,7 +251,7 @@ body {
   width: 50%;
   display:inline;
   text-align: center;
-  padding: 18px 11px;
+  padding: 16px 11px 18px;
 }
 
 #rotten-ratings{
@@ -365,7 +368,7 @@ body {
 
 /* movie show */
  #imdb-ratings-show {
-    padding: 14px 13px 15px;
+    padding: 12px 13px 13px;
     border-right: 1px solid #d6d6d6;
     width: 50%;
     display:inline;
