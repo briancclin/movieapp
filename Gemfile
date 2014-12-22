@@ -71,6 +71,8 @@ gem 'pure-css-rails'
 
 gem 'rottentomatoes'
 
+gem 'newrelic_rpm'
+
 group :test do
   gem 'selenium-webdriver', '2.35.1'
   gem 'capybara', '2.1.0'

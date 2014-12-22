@@ -82,6 +82,7 @@ GEM
     minitest (5.5.0)
     multi_json (1.10.1)
     multi_xml (0.5.5)
+    newrelic_rpm (3.9.8.273)
     nokogiri (1.6.2.1-x86-mingw32)
       mini_portile (= 0.6.0)
     pg (0.15.1-x86-mingw32)
@@ -194,6 +195,7 @@ DEPENDENCIES
   jquery-scrollto-rails
   jquery-ui-rails
   minitest
+  newrelic_rpm
   pg (= 0.15.1)
   pure-css-rails
   rails (= 4.1.1)
