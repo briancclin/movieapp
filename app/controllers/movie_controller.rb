@@ -25,4 +25,12 @@ class MovieController < ApplicationController
     @rotten_rating = @movie.rotten_rating
     @backdrop = @moviedb.backdrop_path
   end
+   def result 
+      movie = params[:query_str]
+      paranthesis = movie[/\((.+)\)/] 
+      movie_year = paranthesis.tr('()','').strip
+      movie_name = movie.gsub(paranthesis,'').strip
+      movie = Movie.where(name: movie_name, year: movie_year).take
+      redirect_to :controller => 'movie', :action => 'show', :id => movie.id
+  end
 end

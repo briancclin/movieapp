@@ -1,5 +1,9 @@
 @import "bootstrap";
 
+.red-placeholder::-webkit-input-placeholder{
+  color: red;
+}
+
 @font-face {
    font-family: 'SourceSansPro'; 
    src: url('SourceSansPro-Regular.otf');

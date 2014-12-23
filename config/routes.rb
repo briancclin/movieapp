@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
   
-  get 'search/result'
+  get 'movie/result'
   
-  get 'search/error'
-
   resources :about
   
   resources :movie do

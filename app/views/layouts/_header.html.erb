@@ -12,7 +12,7 @@
         			<span class="icon-bar"></span>
       			</button>
       		</div>
-      		<form class="navbar-form navbar-left" id="navbar-search" role="search" action="/search/result" method="get">
+      		<form class="navbar-form navbar-left" id="navbar-search" role="search" action="/movie/result" method="get">
       			<div class="input-group" id="search-bar">
         			<input type="text" id="query_str" name="query_str" data-autocomplete="/movie/autocomplete_movie_name" class="form-control" placeholder="Search a movie">  	
         				<span class="input-group-btn">
@@ -33,6 +33,19 @@
 	</nav>
 	<script>
 		$('#query_str').autocomplete({ delay: 0, minLength: 0 });
+		
+		$("button#search-button").click(function() {
+			var query_str = $("#query_str").val();
+			var regExp = /\((.+)\)/;
+			var match = query_str.match(regExp);
+			if(match === null || query_str == "")
+			{
+				$("#query_str").val('');
+				event.preventDefault();
+				$("#query_str").attr("placeholder", "Select from autocomplete");
+				$("#query_str").addClass('red-placeholder');
+			}
+		});
 	</script>
 		
 </header>
