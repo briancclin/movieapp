@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140901035413) do
+ActiveRecord::Schema.define(version: 20141230072022) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20140901035413) do
     t.integer  "rotten_id"
     t.string   "rotten_link"
     t.boolean  "certified_fresh"
+    t.string   "release_date"
   end
 
 end

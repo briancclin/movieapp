@@ -37,7 +37,7 @@
             		<%= image_tag("#{@configuration.base_url}w185#{item.poster_path}", size: "185x278", id:"movie-image") if item.poster_path %>
           		<% end %>
           			<h4 class="movie-name" data-content="<h4><%= item.name %></h4>"><%= item.name %></h4>
-          			<h4 class="movie-year">(<%= item.year %>)</h4>
+          			<h4 class="movie-year" data-release="<%= item.release_date %>">(<%= item.year %>)</h4>
           			<div class="ratings">
           				<% imdb_path = "http://www.imdb.com/title/tt" + item.imdb_id.to_s %>
           				<%= link_to imdb_path do %>
@@ -127,12 +127,12 @@ $("button#ztoa").click(function() {
 });
 
 $("button#yearup").click(function() {
-	sortMovies($(this).data("sortKey"),$(this).data("method"));
+	sortMoviesDate($(this).data("sortKey"),$(this).data("method"));
 	buttonHighlight("button#yearup");
 });
 
 $("button#yeardown").click(function() {
-	sortMovies($(this).data("sortKey"),$(this).data("method"));
+	sortMoviesDate($(this).data("sortKey"),$(this).data("method"));
 	buttonHighlight("button#yeardown");
 });
 

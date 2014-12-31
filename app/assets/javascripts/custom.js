@@ -45,6 +45,33 @@ function sortMovies(sortKey, method) {
 	});
 }
 
+function sortMoviesDate(sortKey, method) {
+	var elems = $('.movie-col');
+	var test = $(elems[0]).find(sortKey);
+	console.log(test);
+	var map = elems.map(function(i, e) {
+		var arr = $(e).find(sortKey).data("release").split("-");
+		var date = new Date(parseInt(arr[0]),parseInt(arr[1]),parseInt(arr[2]));
+  	return { index: i, value: date };
+	});
+	var sorted = map.sort(function(a, b) {
+		if(method == 'asc')
+  			return +(a.value > b.value) || +(a.value === b.value) - 1;
+  		else
+  			return +(a.value < b.value) || +(a.value === b.value) - 1;
+	});	
+	elems = map.map(function(e){
+  		return elems[sorted[e].index];
+});
+	var rows = $('.row');
+	rows.append(elems);
+/* lazy load images */
+    $("img.lazy").lazyload({
+    	effect : "fadeIn",
+    	failure_limit : 5
+	});
+}
+
 function sortMoviesNum(sortKey, method) {
 	var elems = $('.movie-col');
 	var map = elems.map(function(i, e) {
