@@ -12,4 +12,4 @@ Initial add of db
 
 To update:
 1) rails r create_moviefile.rb (updates the movies.txt file)
-2) rails r update_db.rb (updates the database)
+2) heroku run rails r update_db.rb (updates the database)

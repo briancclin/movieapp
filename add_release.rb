@@ -5,11 +5,9 @@ Tmdb::Api.key("4ec3a19d6af74f88a492405690f72298")
 
 movie = Movie.all
 movie.each do |item|
-  puts item.name
   #get imdb release dates
   movie_details = Imdb::Movie.new(item.imdb_id)
   output = movie_details.release_date
-  puts output
   
   #check if output is nil
   if output.nil?
@@ -25,11 +23,8 @@ movie.each do |item|
     else
       #format is separated by a space ' '
       day = split_date[0].to_i
-      puts day
       month = Date::MONTHNAMES.index(split_date[1])
-      puts month
       year = split_date[2].to_i
-      puts year
       release_date = Date.new(year,month,day).to_s
       item.update(release_date: release_date)
     end
