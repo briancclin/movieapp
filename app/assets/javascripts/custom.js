@@ -17,10 +17,6 @@ function scrollToTop() {
 }
 
 /* Button functions */
-function insertButtonInfo(button, sortKey, method) {
-	$(button).data("sortKey", sortKey);
-	$(button).data("method", method);
-}
 
 function sortMovies(sortKey, method) {
 	var elems = $('.movie-col');
@@ -119,31 +115,31 @@ function linkHighlight(linkName) {
 }
 
 function sortatoz(){
-	sortMovies($("button#atoz").data("sortKey"),$("button#atoz").data("method"));
+	sortMovies($("button#atoz").data("sortkey"),$("button#atoz").data("method"));
 	linkHighlight("li#atoz");
 }
 
 function sortztoa(){
-	sortMovies($("button#ztoa").data("sortKey"),$("button#ztoa").data("method"));
+	sortMovies($("button#ztoa").data("sortkey"),$("button#ztoa").data("method"));
 	linkHighlight("li#ztoa");
 }
 
 function sortoldest(){
-	sortMovies($("button#yearup").data("sortKey"),$("button#yearup").data("method"));
+	sortMovies($("button#yearup").data("sortkey"),$("button#yearup").data("method"));
 	linkHighlight("li#yearup");
 }
 
 function sortnewest(){
-	sortMovies($("button#yeardown").data("sortKey"),$("button#yeardown").data("method"));
+	sortMovies($("button#yeardown").data("sortkey"),$("button#yeardown").data("method"));
 	linkHighlight("li#yeardown");
 }
 
 function sortimdb(){
-	sortMovies($("button#imdb").data("sortKey"),$("button#imdb").data("method"));
+	sortMovies($("button#imdb").data("sortkey"),$("button#imdb").data("method"));
 	linkHighlight("li#imdb");
 }
 
 function sortrt(){
-	sortMoviesNum($("button#rotten").data("sortKey"),$("button#rotten").data("method"));
+	sortMoviesNum($("button#rotten").data("sortkey"),$("button#rotten").data("method"));
 	linkHighlight("li#rotten");
 }

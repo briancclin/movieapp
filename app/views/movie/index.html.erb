@@ -4,14 +4,13 @@
 	<font size="4"<b>Sort By: </b></font>
 	
 	<div class="btn-group hidden-xs">
-		<button id="atoz" class="pure-button pure-button-active">A-Z</button>
-		<button id="ztoa" class="pure-button">Z-A</button>
-		<button id="yearup" class="pure-button">Oldest</button>
-		<button id="yeardown" class="pure-button">Newest</button>
-		<button id="imdb" class="pure-button">IMDb Rating</button>
-		<button id="rotten" class="pure-button">RT rating</button>
+		<button id="atoz" class="pure-button pure-button-active" data-sortkey=".movie-name" data-method="asc">A-Z</button>
+		<button id="ztoa" class="pure-button" data-sortkey=".movie-name" data-method="desc">Z-A</button>
+		<button id="yearup" class="pure-button" data-sortkey=".movie-year" data-method="asc">Oldest</button>
+		<button id="yeardown" class="pure-button" data-sortkey=".movie-year" data-method="desc">Newest</button>
+		<button id="imdb" class="pure-button" data-sortkey=".imdb-rating" data-method="desc">IMDb Rating</button>
+		<button id="rotten" class="pure-button" data-sortkey=".rotten-rating" data-method="desc">RT rating</button>
 	</div>
-	
 	<div class="btn-group visible-xs-inline-block">
   		<button type="button" id="sort-button" class="pure-button dropdown-toggle" data-toggle="dropdown">
     		<i class="fa fa-lg fa-caret-down"></i>
@@ -109,40 +108,34 @@ $(document).ready(function() {
 	});
     
     /* sorting */
-insertButtonInfo('button#atoz', ".movie-name", "asc");
-insertButtonInfo('button#ztoa', ".movie-name", "desc");
-insertButtonInfo('button#yearup', ".movie-year", "asc");
-insertButtonInfo('button#yeardown', ".movie-year", "desc");
-insertButtonInfo('button#imdb', ".imdb-rating", "desc");
-insertButtonInfo('button#rotten', ".rotten-rating", "desc");
 
 $("button#atoz").click(function() {
-	sortMovies($(this).data("sortKey"),$(this).data("method"));
+	sortMovies($(this).data("sortkey"),$(this).data("method"));
 	buttonHighlight("button#atoz");
 });
 
 $("button#ztoa").click(function() {
-	sortMovies($(this).data("sortKey"),$(this).data("method"));
+	sortMovies($(this).data("sortkey"),$(this).data("method"));
 	buttonHighlight("button#ztoa");
 });
 
 $("button#yearup").click(function() {
-	sortMoviesDate($(this).data("sortKey"),$(this).data("method"));
+	sortMoviesDate($(this).data("sortkey"),$(this).data("method"));
 	buttonHighlight("button#yearup");
 });
 
 $("button#yeardown").click(function() {
-	sortMoviesDate($(this).data("sortKey"),$(this).data("method"));
+	sortMoviesDate($(this).data("sortkey"),$(this).data("method"));
 	buttonHighlight("button#yeardown");
 });
 
 $("button#imdb").click(function() {
-	sortMovies($(this).data("sortKey"),$(this).data("method"));
+	sortMovies($(this).data("sortkey"),$(this).data("method"));
 	buttonHighlight("button#imdb");
 });
 
 $("button#rotten").click(function() {
-	sortMoviesNum($(this).data("sortKey"),$(this).data("method"));
+	sortMoviesNum($(this).data("sortkey"),$(this).data("method"));
 	buttonHighlight("button#rotten");
 });
 
