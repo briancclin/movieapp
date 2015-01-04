@@ -125,12 +125,12 @@ function sortztoa(){
 }
 
 function sortoldest(){
-	sortMovies($("button#yearup").data("sortkey"),$("button#yearup").data("method"));
+	sortMoviesDate($("button#yearup").data("sortkey"),$("button#yearup").data("method"));
 	linkHighlight("li#yearup");
 }
 
 function sortnewest(){
-	sortMovies($("button#yeardown").data("sortkey"),$("button#yeardown").data("method"));
+	sortMoviesDate($("button#yeardown").data("sortkey"),$("button#yeardown").data("method"));
 	linkHighlight("li#yeardown");
 }
 
