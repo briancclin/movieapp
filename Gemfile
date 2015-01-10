@@ -4,15 +4,9 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
 # Use sqlite3 as the database for Active Record
-group :development, :test do
-  gem 'sqlite3', '1.3.8'
-  gem 'rspec-rails', '2.13.1'
-end
 
-group :production do
-  gem 'pg', '0.15.1'
-  gem 'rails_12factor', '0.0.2'
-end
+gem 'pg', '0.15.1'
+gem 'rails_12factor', '0.0.2'
 
 # Use Bootstrap
 gem 'bootstrap-sass'
@@ -72,6 +66,8 @@ gem 'pure-css-rails'
 gem 'rottentomatoes'
 
 gem 'newrelic_rpm'
+
+gem 'yui-compressor'
 
 group :test do
   gem 'selenium-webdriver', '2.35.1'
