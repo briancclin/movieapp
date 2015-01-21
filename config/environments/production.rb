@@ -83,4 +83,8 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   
   config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
+  
+    # Force all access to the app over SSL, use Strict-Transport-Security,
+  # and use secure cookies.
+  config.force_ssl = true
 end

@@ -8,6 +8,11 @@ gem 'rails', '4.1.1'
 gem 'pg', '0.15.1'
 gem 'rails_12factor', '0.0.2'
 
+
+group :production do
+  gem 'unicorn'
+end
+
 # Use Bootstrap
 gem 'bootstrap-sass'
 gem 'sprockets', '2.11.0'
@@ -68,6 +73,8 @@ gem 'rottentomatoes'
 gem 'newrelic_rpm'
 
 gem 'yui-compressor'
+
+gem 'bcrypt',               '3.1.7'
 
 group :test do
   gem 'selenium-webdriver', '2.35.1'

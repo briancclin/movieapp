@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  
-  get 'users/new'
 
   get 'movie/result'
   
@@ -9,6 +7,8 @@ Rails.application.routes.draw do
   resources :movie do
     get :autocomplete_movie_name, :on => :collection
   end
+  
+  resources :users
   
   root  'movie#index'
   
