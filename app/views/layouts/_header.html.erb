@@ -25,8 +25,14 @@
       		<div class="collapse navbar-collapse" id="nav-right">
         		<ul class="nav navbar-right navbar-nav">
           			<li><%= link_to "Home", root_path, id: "home-link" %></li>
-          			<!--<li><%= link_to "About", root_path, id: "home-link" %></li> -->
           			<li><%= link_to "About", about_index_path, id: "movie-link" %></li>
+          			<% if logged_in? %>
+          				<li><%= link_to "Settings", edit_user_path(current_user) %></li>
+          				<li><%= link_to "Log out", logout_path, method: "delete" %></li>
+          			<% else %>
+          				<li><%= link_to "Sign up", signup_path %></li>
+        				<li><%= link_to "Log in", login_path %></li>
+        			<% end %>
         		</ul>
        		</div>
         </div>

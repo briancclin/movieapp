@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'sessions/new'
+
   get 'movie/result'
   
   resources :about
@@ -9,6 +11,12 @@ Rails.application.routes.draw do
   end
   
   resources :users
+  get    'signup'  => 'users#new'
+  get    'login'   => 'sessions#new'
+  post   'login'   => 'sessions#create'
+  delete 'logout'  => 'sessions#destroy'
+  
+  resources :account_activations, only: [:edit]
   
   root  'movie#index'
   
